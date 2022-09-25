@@ -1,7 +1,7 @@
 import ComingSoonSection from "../../components/ComingSoonSection";
 
-const Leaderboards = () => {
+const Decks = () => {
   return <ComingSoonSection />;
 };
 
-export default Leaderboards;
+export default Decks;

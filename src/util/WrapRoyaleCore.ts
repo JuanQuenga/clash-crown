@@ -1,11 +1,9 @@
 import axios, { AxiosInstance } from 'axios';
 
-// https://api.clashroyale.com/v1/
-
 export class WrapRoyaleCore {
 	private request: AxiosInstance;
 
-	constructor(private token: string, private baseUrl: string = 'http://173.212.245.60/v1/') {
+	constructor(private token: string, private baseUrl: string = 'https://api.clashroyale.com/v1/') {
 		this.request = axios.create({
 			baseURL: this.baseUrl,
 			headers: {
@@ -34,3 +32,6 @@ export class WrapRoyaleCore {
 		return this.request.get('players/%23' + playerTag + '/upcomingchests');
 	}
 }
+
+
+// ClashRoyaleAPI.getPlayer('C9CRJ822Q')

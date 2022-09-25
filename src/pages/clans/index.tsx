@@ -1,9 +1,7 @@
+import ComingSoonSection from "../../components/ComingSoonSection";
+
 const Clans = () => {
-  return (
-    <section className="h-screen flex justify-center items-center">
-      <h1 className="font-supercell text-white text-4xl">Coming Soon</h1>
-    </section>
-  );
+  return <ComingSoonSection />;
 };
 
 export default Clans;
