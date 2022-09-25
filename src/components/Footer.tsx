@@ -54,6 +54,7 @@ const Footer = () => {
           <a
             href={link.url}
             target="_blank"
+            rel="noreferrer"
             className="flex hover:text-pink-dark items-center"
             key={index}
           >
@@ -71,14 +72,16 @@ const Footer = () => {
             href="#"
             className="font-bold text-pink-dark hover:text-pink-medium"
             target="_blank"
+            rel="noreferrer"
           >
-            Supercell's Fan Content Policy
+            Supercell&apos;s Fan Content Policy
           </a>
           . See our{" "}
           <a
             href="#"
             className="font-bold text-pink-dark hover:text-pink-medium"
             target="_blank"
+            rel="noreferrer"
           >
             Privacy Policy
           </a>{" "}

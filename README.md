@@ -9,3 +9,4 @@ Track your Clash Royale in-game stats & upcoming chests.
 ## Goals
 
 ... .
+git
