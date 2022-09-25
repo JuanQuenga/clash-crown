@@ -8,7 +8,7 @@ import Image from "next/image";
 import StatItem from "../../components/StatItem";
 import { motion } from "framer-motion";
 import { FullPlayer, Player } from "../../types/ClashRoyaleAPI/players/player";
-import { PlayerCard, PlayerClan } from "../../types/ClashRoyale";
+import { PlayerCard } from "../../types/ClashRoyale";
 import ProfileClanButton from "../../components/ProfileClanButton";
 import TabView from "../../components/TabView/TabView";
 import UpcomingChests from "../../components/UpcomingChests";
