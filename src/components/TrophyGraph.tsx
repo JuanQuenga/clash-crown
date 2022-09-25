@@ -16,8 +16,6 @@ const TrophyGraph = ({ tag }: TrophyGraphProps) => {
   });
   const logTrophies = logData.map((log) => log.team[0]?.startingTrophies);
 
-  var type = "Bar";
-
   useEffect(() => {
     if (!tag) return;
     fetchBattlelog();

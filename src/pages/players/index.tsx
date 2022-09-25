@@ -1,5 +1,3 @@
-import TabView from "../../components/TabView/TabView";
-
 const Players = () => {
   return (
     <section className="h-screen flex justify-center items-center">

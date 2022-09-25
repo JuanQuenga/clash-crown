@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 import type { AppType } from "next/dist/shared/lib/utils";
 import Layout from "../components/Layout";
-import { StrictMode } from "react";
 import Head from "next/head";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
@@ -33,7 +32,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d171d4" />
         <meta name="msapplication-TileColor" content="#603cba" />
         <meta name="theme-color" content="#020d1b" />
-        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
       </Head>
       <Layout>
         <Component {...pageProps} />

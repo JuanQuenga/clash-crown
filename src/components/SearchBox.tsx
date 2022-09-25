@@ -3,7 +3,7 @@ import { HiChevronDown } from "react-icons/hi";
 import { FiInfo } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import Router from "next/router";
-import { HashtagHelper } from "../util/HashtagHelper";
+import { isValidHashtag, normalizeHashtag } from "../util/HashtagHelper";
 import axios from "axios";
 import { MdNavigateNext } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -36,7 +36,7 @@ const SearchBox = () => {
   /** Everytime the query state is changed, fetch the player/clan data from the API */
   useEffect(() => {
     console.log("useEffect");
-    const isQueryValidTag = HashtagHelper.isValidHashtag(normalizedQuery());
+    const isQueryValidTag = isValidHashtag(normalizedQuery());
     if (!isQueryValidTag) {
       setSuggestion(null);
     } else {
@@ -74,7 +74,7 @@ const SearchBox = () => {
 
   /** Temporary wrapper function to call.  */
   function normalizedQuery(tagToNormalize?: string): string {
-    return HashtagHelper.normalizeHashtag(tagToNormalize || query);
+    return normalizeHashtag(tagToNormalize || query);
   }
 
   /** Navigate to player/clan page for current query */
@@ -82,14 +82,12 @@ const SearchBox = () => {
     if (!suggestion) return;
 
     saveSearchToStorage();
-    router.push(
-      `/${searchTarget}/${HashtagHelper.normalizeHashtag(suggestion.tag)}`
-    );
+    router.push(`/${searchTarget}/${normalizeHashtag(suggestion.tag)}`);
   }
 
   /** Fetch player data from current query in state*/
   function getSuggestion(tagFromHistory?: string) {
-    const isQueryValidTag = HashtagHelper.isValidHashtag(normalizedQuery());
+    const isQueryValidTag = isValidHashtag(normalizedQuery());
     if (!isQueryValidTag && !tagFromHistory) return;
     const tagToFetch = tagFromHistory || normalizedQuery();
     console.log("fetching data for: ", tagToFetch);
