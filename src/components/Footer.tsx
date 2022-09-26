@@ -6,7 +6,7 @@ const Footer = () => {
     {
       icon: <FaGithubSquare className="text-2xl mr-2" />,
       label: "View code on Github",
-      url: "/",
+      url: "https://github.com/JuanQuenga/clash-crown",
     },
     // {
     //   icon: <FaTwitterSquare className="text-2xl mr-2" />,
@@ -22,19 +22,19 @@ const Footer = () => {
   const interenalLinks = [
     {
       label: "Top Decks",
-      url: "/",
+      url: "/decks",
     },
     {
       label: "Top Cards",
-      url: "/",
+      url: "/cards",
     },
     {
       label: "Top Players",
-      url: "/",
+      url: "/players",
     },
     {
       label: "Top Clans",
-      url: "/",
+      url: "/clans",
     },
   ];
 
