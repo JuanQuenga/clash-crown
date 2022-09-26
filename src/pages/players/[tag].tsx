@@ -4,19 +4,24 @@ import { useEffect, useState } from "react";
 import LoadingSection from "../../components/LoadingSection";
 import NotFoundSection from "../../components/NotFoundSection";
 import { IoReloadCircle } from "react-icons/io5";
-import Image from "next/image";
-import StatItem from "../../components/StatItem";
 import { motion } from "framer-motion";
-import { FullPlayer, Player } from "../../types/ClashRoyaleAPI/players/player";
-import { PlayerCard } from "../../types/ClashRoyale";
-import ProfileClanButton from "../../components/ProfileClanButton";
+import {
+  Badge,
+  FullPlayer,
+  Player,
+} from "../../types/ClashRoyaleAPI/players/player";
+import { PlayerCard, Role } from "../../types/ClashRoyale";
+import ProfileClanButton from "../../components/players/ProfileClanButton";
 import TabView from "../../components/TabView/TabView";
 import UpcomingChests from "../../components/UpcomingChests";
 import ExperienceStar from "../../components/ExperienceStar";
 import ArenaIcon from "../../components/ArenaIcon";
 import MiniStatItem from "../../components/MiniStatItem";
 import { UpcomingChest } from "../../types/ClashRoyaleAPI/players/chests";
-import Deck from "../../components/Deck";
+import StatsSection from "../../components/players/StatsSection";
+import CardsSection from "../../components/players/CardsSection";
+import BadgeSection from "../../components/players/BadgeSection";
+import DeckSection from "../../components/players/DeckSection";
 
 // Will use getServerSideProps() in the future.
 // I just wanted to get more use with react hooks.
@@ -53,23 +58,27 @@ const Player = () => {
   const tabs = [
     {
       title: "Stats",
+      content: <StatsSection data={playerData?.player as Player} />,
+    },
+    {
+      title: "Battles",
       content: (
-        <div>
-          <StatGrid data={playerData?.player as Player} />
+        <div className="">
+          <div className="flex h-1/2 justify-center items-start font-supercell text-4xl">
+            No Recent Battle History
+          </div>
         </div>
       ),
     },
     {
-      title: "Battles",
-      content: <div>Battle History</div>,
-    },
-    {
-      title: "Decks",
-      content: <div>Player Decks</div>,
+      title: "Badges",
+      content: <BadgeSection badges={playerData?.player.badges as Badge[]} />,
     },
     {
       title: "Cards",
-      content: <div>Player Cards</div>,
+      content: (
+        <CardsSection cards={playerData?.player.cards as PlayerCard[]} />
+      ),
     },
   ];
 
@@ -118,9 +127,10 @@ const Player = () => {
             animate={{ x: 0 }}
             transition={{ duration: 0.4, delay: 0.03 }}
           >
-            {playerData?.player.clan ? (
-              <ProfileClanButton profile={playerData.player} />
-            ) : null}
+            <ProfileClanButton
+              clan={playerData?.player.clan}
+              role={playerData?.player.role as Role}
+            />
           </motion.div>
         </div>
 
@@ -142,117 +152,32 @@ const Player = () => {
         <div className="flex-grow"></div>
         <div className="flex font-supercell text-main text-xs items-center">
           updated just now{" "}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => fetchAllPlayerData()}
-            className="flex font-supercell bg-[#2e4667] text-xs text-white rounded-md py-2 px-3 ml-4 items-center"
+            className="flex font-supercell bg-[#2e4667] text-xs text-white rounded-md py-2 px-3 ml-4 items-center hover:bg-pink-medium"
           >
             <IoReloadCircle className="text-xl self-center mr-2" />
             Refresh
-          </button>
+          </motion.button>
         </div>
       </div>
       <div className="grid md:grid-cols-6 grid-cols-1 gap-2 mb-8">
-        <div className="lg:col-span-2 md:col-span-3">
-          <DeckSection
-            cards={playerData?.player?.currentDeck as PlayerCard[]}
-          />
-        </div>
-
         <div className="lg:col-span-4 md:col-span-3">
           <UpcomingChests
             chests={playerData?.upcomingchests as UpcomingChest[]}
           />
         </div>
-      </div>
 
-      <TabView tabs={tabs} />
-    </section>
-  );
-};
-
-const DeckSection = ({ cards }: { cards: PlayerCard[] }) => {
-  return (
-    <section className="text-white font-supercell px-2">
-      <div className="flex flex-row">
-        <h1 className="text-2xl flex-1 border-b-2 border-white pb-2 mb-2">
-          Current Deck
-        </h1>
-      </div>
-      <div className="flex flex-col">
-        <Deck cards={cards} />
-        <div className="flex-grow mt-2">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex bg-main rounded-md p-2 gap-2"
-          >
-            <a
-              href={`https://link.clashroyale.com/deck/en?deck=${cards
-                .map((c) => c.id)
-                .join(";")}`}
-              className="flex-grow whitespace-nowrap"
-            >
-              Copy Deck
-            </a>
-            <Image
-              src="/images/icons/copy.png"
-              alt="copy deck"
-              width={20}
-              height={20}
-            />
-          </motion.button>
+        <div className="lg:col-span-2 md:col-span-3">
+          <DeckSection
+            cards={playerData?.player?.currentDeck as PlayerCard[]}
+          />
         </div>
       </div>
+      <TabView tabs={tabs} />
     </section>
-  );
-};
-
-const StatGrid = ({ data }: { data: Player }) => {
-  const getRandomInt = (max: number) => {
-    return Math.floor(Math.random() * max);
-  };
-
-  return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 grid-rows-3 text-white">
-      <StatItem
-        label="Highest Trophies"
-        value={data.bestTrophies}
-        icon="trophies"
-      />
-      <StatItem
-        label="Current Trophies"
-        value={data.trophies}
-        icon="trophies"
-      />
-      <StatItem
-        label="Challenge Cards Won"
-        value={data.challengeCardsWon}
-        icon="cards"
-      />
-      <StatItem
-        label="Tourney Cards Won"
-        value={data.tournamentCardsWon}
-        icon="clan-crown"
-      />
-
-      <StatItem
-        label="Total Donations"
-        value={data.totalDonations}
-        icon="playerlevel"
-      />
-      <StatItem label="Prev Season Rank" value={0} icon="clock" />
-      <StatItem label="Prev Season Trophies" value={0} icon="elixir" />
-      <StatItem label="Prev Season Highest" value={0} icon="copy" />
-
-      <StatItem label="Wins" value={data.wins} icon="book" />
-      <StatItem label="Losses" value={data.losses} icon="battle-friendly" />
-      <StatItem
-        label="3 Crown Wins"
-        value={data.threeCrownWins}
-        icon="commoncard"
-      />
-      <StatItem label="League" value={0} icon="spawnlevel" />
-    </div>
   );
 };
 

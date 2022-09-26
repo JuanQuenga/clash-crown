@@ -1,5 +1,6 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaGithubSquare, FaTwitterSquare, FaDiscord } from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
 
 const Footer = () => {
   const externalLinks = [
@@ -42,25 +43,32 @@ const Footer = () => {
     <footer className="cc-container text-footer pb-4 p-4 mt-72">
       <div className="flex flex-row gap-4 font-supercell">
         {interenalLinks.map((link, index) => (
-          <div key={index}>
-            <Link href={link.url} className=" hover:text-pink-dark">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            key={index}
+            className="hover:text-pink-dark"
+          >
+            <Link href={link.url} className="">
               {link.label}
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className="flex flex-row font-supercell gap-4 md:gap-8 mx-auto mt-8">
         {externalLinks.map((link, index) => (
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href={link.url}
             target="_blank"
             rel="noreferrer"
-            className="flex hover:text-pink-dark items-center"
+            className="flex items-center hover:text-pink-dark"
             key={index}
           >
             {link.icon}
             {link.label}
-          </a>
+          </motion.a>
         ))}
       </div>
       <div className="mt-12 mb-2 md:max-w-[60%] max-w-[50%]">
@@ -89,7 +97,7 @@ const Footer = () => {
           <strong> v1.2</strong>
         </p>
       </div>
-      <span className="text-pink-dark">
+      <span className="text-pink-dark font-bold">
         © 2022 ClashCrown. All rights reserved.
       </span>
     </footer>

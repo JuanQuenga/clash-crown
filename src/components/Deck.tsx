@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { Card, PlayerCard } from "../types/ClashRoyale";
-import { cardImageURL } from "../util/ClashRoyale";
+import CardImage from "./CardImage";
 
 interface DeckProps {
   cards: Card[] | PlayerCard[];
@@ -13,13 +12,7 @@ const Deck = ({ cards }: DeckProps) => {
         {cards.map((card, index) => {
           return (
             <div key={index} className="">
-              <Image
-                src={cardImageURL(card.name)}
-                alt={card.name}
-                layout="responsive"
-                height="110%"
-                width="100%"
-              />
+              <CardImage card={card} />
             </div>
           );
         })}

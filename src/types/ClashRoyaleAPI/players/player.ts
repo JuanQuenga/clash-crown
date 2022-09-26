@@ -1,4 +1,4 @@
-import { Arena, IconUrls, IIconUrls, PlayerCard, PlayerClan } from "../../ClashRoyale";
+import { Arena, IconUrls, PlayerCard, PlayerClan } from "../../ClashRoyale";
 import { BattleLog } from "./battlelog";
 import { UpcomingChest } from "./chests";
 
@@ -49,20 +49,20 @@ export interface Player {
 	leagueStatistics?: LeagueStatistics;
 }
 
-interface LeagueStatistics {
+export interface LeagueStatistics {
 	currentSeason: Season;
 	previousSeason: Season;
 	bestSeason: Season;
 }
 
-interface Season {
+export interface Season {
 	id?: string;
 	rank?: number;
 	trophies: number;
 	bestTrophies?: number;
 }
 
-interface Badge {
+export interface Badge {
 	name: string;
 	level: number;
 	maxLevel: number;
@@ -71,7 +71,7 @@ interface Badge {
 	iconUrls: IconUrls;
 }
 
-interface Achievement {
+export interface Achievement {
 	name: string;
 	stars: number;
 	value: number;

@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
-import { PlayerClan } from "../types/ClashRoyale";
-import { Player } from "../types/ClashRoyaleAPI/players/player";
-import ClanBadge from "./ClanBadge";
+import { PlayerClan, Role } from "../../types/ClashRoyale";
+import ClanBadge from "../ClanBadge";
 
-const ProfileClanButton = ({ profile }: { profile: Player }) => {
+interface ProfileClanButtonProps {
+  clan?: PlayerClan;
+  role?: Role;
+}
+
+const ProfileClanButton = ({ clan, role }: ProfileClanButtonProps) => {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -12,12 +16,12 @@ const ProfileClanButton = ({ profile }: { profile: Player }) => {
     >
       <div className="flex flex-col text-right mr-2">
         <small className="font-supercell text-xs -mb-1">
-          {profile.clan?.name || "No Clan"}
+          {clan ? clan.name : "No Clan"}
         </small>
-        <span className="capitalize">{profile.role}</span>
+        <span className="capitalize">{role}</span>
       </div>
       <div className="-mr-2">
-        <ClanBadge clan={profile.clan as PlayerClan} />
+        <ClanBadge clan={clan as PlayerClan} />
       </div>
     </motion.div>
   );

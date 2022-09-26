@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { IoCartOutline } from "react-icons/io5";
-import { string } from "zod";
 
 interface INavLink {
   href: string;
