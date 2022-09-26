@@ -95,3 +95,9 @@ export function getHashtagFromHiLo(high: number, low: number): string {
 export function getGameTypeName(gameType: string): string {
 	return gameTypes[gameType] as string;
 }
+
+export function cardImageURL(cardName: string, gold = false): string {
+	const cardSlug = cardName.toLocaleLowerCase().replaceAll(" ", "-").replaceAll(".", "");
+
+	return `/images/${gold ? 'cards-gold' : 'cards'}/${cardSlug}.png`;
+}

@@ -3,7 +3,7 @@ import { HiChevronDown } from "react-icons/hi";
 import { FiInfo } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import Router from "next/router";
-import { isValidHashtag, normalizeHashtag } from "../util/HashtagHelper";
+import { isValidHashtag, normalizeHashtag } from "../util/ClashRoyale";
 import axios from "axios";
 import { MdNavigateNext } from "react-icons/md";
 import { motion } from "framer-motion";

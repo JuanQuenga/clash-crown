@@ -16,6 +16,7 @@ import ExperienceStar from "../../components/ExperienceStar";
 import ArenaIcon from "../../components/ArenaIcon";
 import MiniStatItem from "../../components/MiniStatItem";
 import { UpcomingChest } from "../../types/ClashRoyaleAPI/players/chests";
+import Deck from "../../components/Deck";
 
 // Will use getServerSideProps() in the future.
 // I just wanted to get more use with react hooks.
@@ -77,6 +78,7 @@ const Player = () => {
       <div className="text-white">
         <div className="flex p-2">
           <motion.div
+            className="hidden md:block"
             initial={{ x: "-100vw" }}
             animate={{ x: 0 }}
             transition={{ duration: 0.4 }}
@@ -111,6 +113,7 @@ const Player = () => {
           </div>
 
           <motion.div
+            className="hidden md:block"
             initial={{ x: "100vw" }}
             animate={{ x: 0 }}
             transition={{ duration: 0.4, delay: 0.03 }}
@@ -148,12 +151,14 @@ const Player = () => {
           </button>
         </div>
       </div>
-      <div className="grid md:grid-cols-6 grid-cols-1 gap-6 mb-8">
-        <div className="md:col-span-3">
-          <Deck deck={playerData?.player?.currentDeck as PlayerCard[]} />
+      <div className="grid md:grid-cols-6 grid-cols-1 gap-2 mb-8">
+        <div className="lg:col-span-2 md:col-span-3">
+          <DeckSection
+            cards={playerData?.player?.currentDeck as PlayerCard[]}
+          />
         </div>
 
-        <div className="md:col-span-3">
+        <div className="lg:col-span-4 md:col-span-3">
           <UpcomingChests
             chests={playerData?.upcomingchests as UpcomingChest[]}
           />
@@ -165,49 +170,24 @@ const Player = () => {
   );
 };
 
-const Deck = ({ deck }: { deck: PlayerCard[] }) => {
+const DeckSection = ({ cards }: { cards: PlayerCard[] }) => {
   return (
-    <div className="text-white font-supercell px-2">
+    <section className="text-white font-supercell px-2">
       <div className="flex flex-row">
-        <h1 className="text-2xl flex-1 border-b-2 border-white pb-2 mb-4">
+        <h1 className="text-2xl flex-1 border-b-2 border-white pb-2 mb-2">
           Current Deck
         </h1>
       </div>
       <div className="flex flex-col">
-        <div className="grid grid-cols-4 grid-rows-2">
-          {deck.map((card, index) => {
-            return (
-              <div
-                key={index}
-                className="grid stacked relative justiy-center items-center overflow-hidden"
-              >
-                <div className="-z-10 relative">
-                  <Image
-                    src={`/images/cards/${card.name
-                      .toLocaleLowerCase()
-                      .replaceAll(" ", "-")
-                      .replaceAll(".", "")}.png`}
-                    alt={card.name}
-                    width={150}
-                    height={180}
-                    layout="responsive"
-                  />
-                </div>
-                {/* <small className="mt-12 bg-main rounded-md text-center mx-2">
-                  Level {card.level}
-                </small> */}
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex-grow">
+        <Deck cards={cards} />
+        <div className="flex-grow mt-2">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex bg-main rounded-md p-2 gap-2"
           >
             <a
-              href={`https://link.clashroyale.com/deck/en?deck=${deck
+              href={`https://link.clashroyale.com/deck/en?deck=${cards
                 .map((c) => c.id)
                 .join(";")}`}
               className="flex-grow whitespace-nowrap"
@@ -223,7 +203,7 @@ const Deck = ({ deck }: { deck: PlayerCard[] }) => {
           </motion.button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -19,23 +19,30 @@ const TabView = ({ tabs, defaultTab = 0 }: TabViewProps) => {
       <div>
         <ul className="flex md:gap-8 gap-1 mb-4 items-baseline text-center md:text-left">
           {tabs.map((tab) => (
-            <motion.li
+            <motion.a
+              href={`#${tab.title}`}
+              onClick={() => setSelectedTab(tab)}
+              whileHover={{
+                scale: selectedTab?.title !== tab.title ? 1.05 : 1,
+              }}
+              whileTap={{
+                scale: selectedTab?.title !== tab.title ? 0.95 : 1,
+              }}
               key={tab.title}
               className={cn(
                 "text-white",
                 {
-                  "border-white border-b-2 pb-2 flex-grow":
+                  "border-white border-b-2 pb-2 flex-grow cursor-default":
                     selectedTab?.title === tab.title,
                 },
                 {
-                  "bg-main rounded-md p-2": selectedTab?.title !== tab.title,
+                  "bg-main rounded-md p-2 hover:bg-pink-medium":
+                    selectedTab?.title !== tab.title,
                 }
               )}
               role="presentation"
             >
-              <a
-                href={`#${tab.title}`}
-                onClick={() => setSelectedTab(tab)}
+              <li
                 className={cn(
                   "font-supercell",
                   {
@@ -45,8 +52,8 @@ const TabView = ({ tabs, defaultTab = 0 }: TabViewProps) => {
                 )}
               >
                 <span>{tab.title}</span>
-              </a>
-            </motion.li>
+              </li>
+            </motion.a>
           ))}
         </ul>
         <AnimatePresence exitBeforeEnter>

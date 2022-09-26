@@ -1,4 +1,3 @@
-import axios from "axios";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { UpcomingChest } from "../types/ClashRoyaleAPI/players/chests";
@@ -17,19 +16,18 @@ const UpcomingChests = ({ chests }: UpcomingChestsProps) => {
       <h1 className="text-2xl mb-2 font-supercell border-b-2 border-white pb-2 mb-4">
         Upcoming Chests
       </h1>
-      <ul className="grid grid-cols-4 grid-rows-2">
+      <ul className="grid grid-cols-4 lg:grid-cols-7 grid-rows-3 lg:grid-rows-2 gap-y-2">
         {chests?.map((chest, index) => {
           return (
             <motion.li
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.05 * index }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               key={`${chest.index} ${chest.name}`}
-              className="flex flex-row group"
+              className="flex flex-row group justify-center"
             >
               <div className="text-[0.8rem]">
-                <div className="flex flex-col items-center">
-                  <div className="bg-main rounded-full p-2 -mb-8 self-start ">
+                <div className="flex flex-col">
+                  <div className="bg-pink-medium rounded-full p-2 -mb-8 self-start ">
                     <span className="font-supercell">
                       {chest.index > 0 ? `+${chest.index}` : "Next"}
                     </span>
@@ -44,9 +42,9 @@ const UpcomingChests = ({ chests }: UpcomingChestsProps) => {
                     />
                   </div>
 
-                  {/* <div className="hidden group-hover:inline-block text-center -bottom-5 whitespace-nowrap uppercase">
+                  <div className="hidden self-end group-hover:inline-block bg-main rounded-md p-1 text-center mt-[5rem] whitespace-nowrap uppercase absolute font-supercell">
                     {chest.name}
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </motion.li>
