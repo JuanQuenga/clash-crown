@@ -32,6 +32,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d171d4" />
         <meta name="msapplication-TileColor" content="#603cba" />
         <meta name="theme-color" content="#020d1b" />
+        <title>Clash Crown</title>
       </Head>
       <Layout>
         <Component {...pageProps} />
