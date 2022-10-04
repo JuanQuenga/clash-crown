@@ -17,7 +17,7 @@ const TabView = ({ tabs, defaultTab = 0 }: TabViewProps) => {
   return (
     <>
       <div>
-        <ul className="flex md:gap-8 gap-1 mb-4 items-baseline text-center md:text-left">
+        <ul className="flex md:gap-8 gap-1 mb-4 items-baseline text-left md:text-left">
           {tabs.map((tab) => (
             <motion.a
               href={`#${tab.title}`}

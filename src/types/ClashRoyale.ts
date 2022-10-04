@@ -2,6 +2,13 @@
  * It's types (e. g. enums) + constants
  */
 
+export interface Location {
+	id: number;
+	name: string;
+	isCountry: boolean;
+	countryCode: string;
+}
+
 export interface Card {
 	name: string;
 	id: number;

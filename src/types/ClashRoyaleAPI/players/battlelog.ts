@@ -10,7 +10,6 @@ export interface BattleLog {
 	deckSelection: Deckselection;
 	team: BattleParticipant[];
 	opponent: BattleParticipant[];
-
 }
 
 export interface BattleParticipant {

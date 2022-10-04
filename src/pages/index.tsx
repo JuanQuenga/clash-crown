@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import BattleComponent from "../components/BattleComponent";
+import HeroItem from "../components/HeroItem";
 import SearchBox from "../components/SearchBox";
+import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
   return (
@@ -22,40 +25,32 @@ const Home: NextPage = () => {
           <div className="">
             <SearchBox />
           </div>
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-24">
-              <HeroItem />
-              <HeroItem />
-              <HeroItem />
+          <section>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-6 mt-24">
+              <HeroItem
+                title="Decks"
+                description="Need a good deck to win a tournament or challenge? We got them!"
+                imageSrc="/images/art/the-bowler.png"
+              />
+              <HeroItem
+                title="Chests"
+                description="Wondering when that Legendary chest is coming? We got you covered."
+                imageSrc="/images/art/hog-rider.png"
+              />
+              <HeroItem
+                title="Stats"
+                description="See how well you're doing in-game and eaily share it with others!"
+                imageSrc="/images/art/prince.png"
+              />
             </div>
-          </div>
+          </section>
+          <section className="my-20">
+            <h2 className="font-supercell text-3xl pb-6">Game Of The Day</h2>
+            {/* <BattleComponent /> */}
+          </section>
         </section>
       </div>
     </>
-  );
-};
-
-const HeroItem = () => {
-  return (
-    <div className="">
-      <div className="grid grid-cols-3 bg-dark rounded-md text-left p-6 ">
-        <div className=" col-span-2">
-          <h2 className="text-white text-2xl font-supercell mb-3">Hog Rider</h2>
-          <p className="text-light">
-            The Hog Rider punishes those who hide behind their puny walls!
-          </p>
-        </div>
-        <div className="relative right-0">
-          <Image
-            src="/images/art/hog-rider.png"
-            layout="responsive"
-            width={700}
-            height={900}
-            className="exp-star drop-shadow-lg"
-          />
-        </div>
-      </div>
-    </div>
   );
 };
 

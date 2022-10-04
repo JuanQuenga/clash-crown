@@ -3,7 +3,7 @@ import { HiChevronDown } from "react-icons/hi";
 import { FiInfo } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import Router from "next/router";
-import { isValidHashtag, normalizeHashtag } from "../util/ClashRoyale";
+import { isValidHashtag, normalizeHashtag } from "../utils/ClashRoyale";
 import axios from "axios";
 import { MdNavigateNext } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -152,9 +152,9 @@ const SearchBox = () => {
             sequence={[
               "Enter Your Player Tag",
               3000,
-              "898Y8PGJ9",
+              "2YGG",
               3000,
-              "#9C90QL8J8",
+              "#LLCP8YG8",
               3000,
             ]}
             wrapper="div"

@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { WrapRoyale } from "../..";
+import { ClashRoyaleAPI } from "../..";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const tag = req.query.tag;
 	try {
-		const playerRequest = await WrapRoyale.getPlayer(tag as string);
-		const battlelogRequest = await WrapRoyale.getBattlelog(tag as string);
-		const upcomingchestsRequest = await WrapRoyale.getUpcomingChests(tag as string);
+		const playerRequest = await ClashRoyaleAPI.getPlayer(tag as string);
+		const battlelogRequest = await ClashRoyaleAPI.getBattlelog(tag as string);
+		const upcomingchestsRequest = await ClashRoyaleAPI.getUpcomingChests(tag as string);
 
 		const fullPlayer = {
 			player: playerRequest.data,

@@ -23,6 +23,8 @@ import CardsSection from "../../components/players/CardsSection";
 import BadgeSection from "../../components/players/BadgeSection";
 import DeckSection from "../../components/players/DeckSection";
 import Head from "next/head";
+import BattlesSection from "../../components/players/BattlesSection";
+import { BattleLog } from "../../types/ClashRoyaleAPI/players/battlelog";
 
 // Will use getServerSideProps() in the future.
 // I just wanted to get more use with react hooks.
@@ -64,11 +66,7 @@ const Player = () => {
     {
       title: "Battles",
       content: (
-        <div className="">
-          <div className="flex h-1/2 justify-center items-start font-supercell text-4xl">
-            No Recent Battle History
-          </div>
-        </div>
+        <BattlesSection battleLog={playerData?.battlelog as BattleLog[]} />
       ),
     },
     {

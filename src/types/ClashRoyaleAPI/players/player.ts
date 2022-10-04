@@ -4,7 +4,7 @@ import { UpcomingChest } from "./chests";
 
 export interface FullPlayer {
 	player: Player;
-	battlelog: BattleLog;
+	battlelog: BattleLog[];
 	upcomingchests: UpcomingChest[];
 }
 
