@@ -29,7 +29,7 @@ export class ArenaStorage {
 	 * Download JSON file.
 	 */
 	private async download(): Promise<boolean> {
-		const arenasJsonUrl: string = 'https://royaleapi.github.io/cr-api-data/json/arenas.json';
+		const arenasJsonUrl = 'https://royaleapi.github.io/cr-api-data/json/arenas.json';
 		const writer: fs.WriteStream = fs.createWriteStream(this.filePath);
 		const response: Axios.AxiosResponse = await Axios.default({
 			method: 'get',

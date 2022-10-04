@@ -13,7 +13,7 @@ const BattlesSection = ({ battleLog }: BattlesSectionProps) => {
     <section>
       {battleLog.map((battle, index) => {
         return (
-          <div className="my-4">
+          <div className="my-4" key={battle.battleTime}>
             <BattleComponent battle={battle} key={battle.battleTime} />
           </div>
         );

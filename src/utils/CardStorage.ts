@@ -28,7 +28,7 @@ export class CardStorage {
 	 * Download JSON file.
 	 */
 	private async download(): Promise<boolean> {
-		const arenasJsonUrl: string = 'https://royaleapi.github.io/cr-api-data/json/cards.json';
+		const arenasJsonUrl = 'https://royaleapi.github.io/cr-api-data/json/cards.json';
 		const writer: fs.WriteStream = fs.createWriteStream(this.filePath);
 		const response: Axios.AxiosResponse = await Axios.default({
 			method: 'get',
