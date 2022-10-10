@@ -13,7 +13,7 @@ import {
 import { PlayerCard, Role } from "../../types/ClashRoyale";
 import ProfileClanButton from "../../components/players/ProfileClanButton";
 import TabView from "../../components/TabView/TabView";
-import UpcomingChests from "../../components/UpcomingChests";
+import UpcomingChests from "../../components/players/UpcomingChests";
 import ExperienceStar from "../../components/ExperienceStar";
 import ArenaIcon from "../../components/ArenaIcon";
 import MiniStatItem from "../../components/MiniStatItem";
@@ -25,6 +25,7 @@ import DeckSection from "../../components/players/DeckSection";
 import Head from "next/head";
 import BattlesSection from "../../components/players/BattlesSection";
 import { BattleLog } from "../../types/ClashRoyaleAPI/players/battlelog";
+import { addCommas } from "../../utils/Formatter";
 
 // Will use getServerSideProps() in the future.
 // I just wanted to get more use with react hooks.
@@ -117,10 +118,12 @@ const Player = () => {
                   arenaName={playerData?.player.arena.name as string}
                   size={100}
                 />
-                <div className="z-10 relative font-supercell text-sm bg-opaque rounded-md p-1 mt-2 ">
+                <div className="z-10 relative font-supercell text-sm rounded-md px-2 py-1 mt-2 ">
                   <span className="drop-shadow-md">
                     {playerData?.player.leagueStatistics?.currentSeason?.rank
-                      ? `Ranking: ${playerData.player.leagueStatistics?.currentSeason.rank}`
+                      ? `Rank: #${addCommas(
+                          playerData.player.leagueStatistics?.currentSeason.rank
+                        )}`
                       : playerData?.player.arena.name}
                   </span>
                 </div>
@@ -139,34 +142,19 @@ const Player = () => {
               />
             </motion.div>
           </div>
-
-          {/* <div>
-          <h2>Achievements</h2>
-          <div className="grid grid-cols-4 grid-rows-6">
-            {playerData.badges.map((badge, index) => {
-              return (
-                <div className="flex flex-col flex-wrap">
-                  <span>{badge.name}</span>
-                  <img src={badge.iconUrls.large} width="100" height="100" />
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
         </div>
-        <div className="flex flex-row my-4 md:my-12">
-          <div className="flex-grow"></div>
-          <div className="flex font-supercell text-main text-xs items-center">
-            updated just now{" "}
+        <div className="flex flex-row items-center justify-center my-4">
+          <div className="flex flex-row-reverse font-supercell text-main text-xs items-center">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => fetchAllPlayerData()}
-              className="flex font-supercell bg-[#2e4667] text-xs text-white rounded-md py-2 px-3 ml-4 items-center hover:bg-pink-medium"
+              className="flex font-supercell bg-[#2e4667] text-sm text-white rounded-md p-2 items-center hover:bg-pink-medium mb-1 ml-2"
             >
               <IoReloadCircle className="text-xl self-center mr-2" />
               Refresh
             </motion.button>
+            <small>updated just now</small>
           </div>
         </div>
         <div className="grid md:grid-cols-6 grid-cols-1 gap-2 mb-8">

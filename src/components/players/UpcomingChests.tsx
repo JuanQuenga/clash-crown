@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { UpcomingChest } from "../types/ClashRoyaleAPI/players/chests";
+import { UpcomingChest } from "../../types/ClashRoyaleAPI/players/chests";
 
 export interface UpcomingChestsProps {
   chests: UpcomingChest[];
@@ -13,9 +13,9 @@ const UpcomingChests = ({ chests }: UpcomingChestsProps) => {
 
   return (
     <div className="text-white">
-      <h1 className="text-2xl mb-2 font-supercell border-b-2 border-white pb-2 mb-4">
+      <h2 className="text-lg md:text-2xl mb-2 font-supercell border-b-2 border-white pb-2">
         Upcoming Chests
-      </h1>
+      </h2>
       <ul className="grid grid-cols-4 lg:grid-cols-7 grid-rows-3 lg:grid-rows-2 gap-y-2">
         {chests?.map((chest, index) => {
           return (

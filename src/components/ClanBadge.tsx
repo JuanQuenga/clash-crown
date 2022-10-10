@@ -1,15 +1,19 @@
 import Image from "next/image";
 import { PlayerClan } from "../types/ClashRoyale";
 
-const ClanBadge = ({ clan }: { clan: PlayerClan }) => {
+const ClanBadge = ({
+  badgeId,
+  name,
+}: {
+  badgeId?: number | string;
+  name?: string;
+}) => {
   return (
-    <div className="w-12 h-14 relative">
-      <Image
-        src={`/images/clan-badges/${clan ? clan.badgeId : 0}.png`}
-        alt={clan ? clan.name : "No Clan"}
-        layout="fill"
-      />
-    </div>
+    <Image
+      src={`/images/clan-badges/${badgeId || 0}.png`}
+      alt={name || "No Clan"}
+      layout="fill"
+    />
   );
 };
 

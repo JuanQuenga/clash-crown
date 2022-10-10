@@ -8,9 +8,9 @@ const DeckSection = ({ cards }: { cards: PlayerCard[] }) => {
   return (
     <section className="text-white font-supercell px-2">
       <div className="flex flex-row">
-        <h1 className="text-2xl flex-1 border-b-2 border-white pb-2 mb-2">
+        <h2 className="text-lg md:text-2xl flex-1 border-b-2 border-white pb-2 mb-2">
           Current Deck
-        </h1>
+        </h2>
       </div>
       <div className="flex flex-col">
         <Deck cards={cards} />

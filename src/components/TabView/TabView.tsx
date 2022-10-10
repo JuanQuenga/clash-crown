@@ -32,7 +32,7 @@ const TabView = ({ tabs, defaultTab = 0 }: TabViewProps) => {
               className={cn(
                 "text-white",
                 {
-                  "border-white border-b-2 pb-2 flex-grow cursor-default":
+                  "border-white border-b-2 pb-1 flex-grow cursor-default":
                     selectedTab?.title === tab.title,
                 },
                 {
@@ -46,9 +46,9 @@ const TabView = ({ tabs, defaultTab = 0 }: TabViewProps) => {
                 className={cn(
                   "font-supercell",
                   {
-                    "text-2xl": selectedTab?.title === tab.title,
+                    "text-lg md:text-2xl": selectedTab?.title === tab.title,
                   },
-                  { "text-sm": selectedTab?.title !== tab.title }
+                  { "text-xs md:text-md": selectedTab?.title !== tab.title }
                 )}
               >
                 <span>{tab.title}</span>

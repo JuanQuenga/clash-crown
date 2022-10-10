@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	try {
 		const response = await ClashRoyaleAPI.getClan(tag as string);
 
-		return res.status(200).json(response);
+		return res.status(200).json(response.data);
 	} catch (error) {
 		console.log(error);
 
