@@ -27,7 +27,7 @@ const UpcomingChests = ({ chests }: UpcomingChestsProps) => {
             >
               <div className="text-[0.8rem]">
                 <div className="flex flex-col">
-                  <div className="bg-pink-medium rounded-full p-2 -mb-8 self-start ">
+                  <div className="bg-magic-medium rounded-full p-2 -mb-8 self-start ">
                     <span className="font-supercell">
                       {chest.index > 0 ? `+${chest.index}` : "Next"}
                     </span>

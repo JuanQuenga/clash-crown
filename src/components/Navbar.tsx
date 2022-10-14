@@ -48,7 +48,7 @@ const Navbar = () => {
             onClick={() => setShowMenu(!showMenu)}
             data-collapse-toggle="navbar-default"
             type="button"
-            className="bg-pink-medium p-2 md:order-3 inline-flex items-center text-red-600 rounded-lg md:hidden focus:border-transparent focus:ring-0"
+            className="bg-magic-medium p-2 md:order-3 inline-flex items-center text-red-600 rounded-lg md:hidden focus:border-transparent focus:ring-0"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -92,7 +92,7 @@ const NavLink = (link: INavLink) => {
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="hover:text-pink-light cursor-pointer drop-shadow-md text-xl bg-pink-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
+        className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
       >
         {link.name}
       </motion.div>

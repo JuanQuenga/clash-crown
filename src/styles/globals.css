@@ -191,3 +191,19 @@ body:has(.home) {
 body.overflow-hidden {
   overflow: hidden;
 }
+
+/** Hidden Scrollbar **/
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+/* ( For IE, Edge and Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/** Gradient Text **/
+.gradient-text {
+  @apply font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#FFD700] to-magic-medium;
+}

@@ -36,7 +36,7 @@ const TabView = ({ tabs, defaultTab = 0 }: TabViewProps) => {
                     selectedTab?.title === tab.title,
                 },
                 {
-                  "bg-main rounded-md p-2 hover:bg-pink-medium":
+                  "bg-main rounded-md p-2 hover:bg-magic-medium":
                     selectedTab?.title !== tab.title,
                 }
               )}

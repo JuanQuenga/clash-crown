@@ -149,7 +149,7 @@ const Player = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => fetchAllPlayerData()}
-              className="flex font-supercell bg-[#2e4667] text-sm text-white rounded-md p-2 items-center hover:bg-pink-medium mb-1 ml-2"
+              className="flex font-supercell bg-[#2e4667] text-sm text-white rounded-md p-2 items-center hover:bg-magic-medium mb-1 ml-2"
             >
               <IoReloadCircle className="text-xl self-center mr-2" />
               Refresh

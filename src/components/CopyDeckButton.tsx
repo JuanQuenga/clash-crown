@@ -14,7 +14,7 @@ const CopyDeckButton = ({
   <motion.button
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    className="flex bg-main rounded-md p-2 gap-2 hover:bg-pink-medium"
+    className="flex bg-main rounded-md p-2 gap-2 hover:bg-magic-medium"
   >
     <a
       href={`https://link.clashroyale.com/deck/en?deck=${cards

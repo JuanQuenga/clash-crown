@@ -47,7 +47,7 @@ const Footer = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             key={index}
-            className="hover:text-pink-dark"
+            className="hover:text-magic-dark"
           >
             <Link href={link.url} className="">
               {link.label}
@@ -63,7 +63,7 @@ const Footer = () => {
             href={link.url}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center hover:text-pink-dark"
+            className="flex items-center hover:text-magic-dark"
             key={index}
           >
             {link.icon}
@@ -78,7 +78,7 @@ const Footer = () => {
           more information see{" "}
           <a
             href="#"
-            className="font-bold text-pink-dark hover:text-pink-medium"
+            className="font-bold text-magic-dark hover:text-magic-medium"
             target="_blank"
             rel="noreferrer"
           >
@@ -87,7 +87,7 @@ const Footer = () => {
           . See our{" "}
           <a
             href="#"
-            className="font-bold text-pink-dark hover:text-pink-medium"
+            className="font-bold text-magic-dark hover:text-magic-medium"
             target="_blank"
             rel="noreferrer"
           >
@@ -97,7 +97,7 @@ const Footer = () => {
           <strong> v1.2</strong>
         </p>
       </div>
-      <span className="text-pink-dark font-bold">
+      <span className="text-magic-dark font-bold">
         © 2022 ClashCrown. All rights reserved.
       </span>
     </footer>

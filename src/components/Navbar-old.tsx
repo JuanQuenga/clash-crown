@@ -24,7 +24,7 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        <div className="md:hidden text-accent1 text-4xl hover:text-pink-light focus:text-pink-medium">
+        <div className="md:hidden text-accent1 text-4xl hover:text-magic-light focus:text-magic-medium">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -46,7 +46,7 @@ const Navbar = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="hover:text-pink-light cursor-pointer drop-shadow-md"
+                  className="hover:text-magic-light cursor-pointer drop-shadow-md"
                 >
                   Players
                 </motion.div>
@@ -55,7 +55,7 @@ const Navbar = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="hover:text-pink-light cursor-pointer drop-shadow-md"
+                  className="hover:text-magic-light cursor-pointer drop-shadow-md"
                 >
                   Clans
                 </motion.div>
@@ -64,7 +64,7 @@ const Navbar = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="hover:text-pink-light cursor-pointer drop-shadow-md"
+                  className="hover:text-magic-light cursor-pointer drop-shadow-md"
                 >
                   Decks
                 </motion.div>
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="hover:text-pink-light cursor-pointer drop-shadow-md"
+                  className="hover:text-magic-light cursor-pointer drop-shadow-md"
                 >
                   Leaderboards
                 </motion.div>

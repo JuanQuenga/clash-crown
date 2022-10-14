@@ -1,10 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import BattleComponent from "../components/BattleComponent";
 import HeroItem from "../components/HeroItem";
-import SearchBox from "../components/SearchBox";
-import { trpc } from "../utils/trpc";
+import SearchBox from "../components/SearchBox/SearchBox";
+import Carousel from "../components/Carousel/Carousel";
+import GradientText from "../components/common/GradientText";
 
 const Home: NextPage = () => {
   return (
@@ -19,7 +18,8 @@ const Home: NextPage = () => {
         <section className="flex flex-col container mx-auto h-screen text-center pt-16 px-2">
           <div className="mx-auto">
             <h1 className="font-supercell text-2xl md:text-3xl text-white pb-6 max-w-xl mx-auto drop-shadow-xl">
-              Track your Clash Royale Stats and Chests
+              Track your <GradientText>Clash Royale Stats</GradientText> and{" "}
+              <GradientText>Chests</GradientText>
             </h1>
           </div>
           <div className="">
@@ -47,6 +47,55 @@ const Home: NextPage = () => {
           <section className="my-20">
             <h2 className="font-supercell text-3xl pb-6">Game Of The Day</h2>
             {/* <BattleComponent /> */}
+          </section>
+          <section className="mb-20">
+            <h2 className="font-supercell text-3xl pb-6">ClashRoyale News</h2>
+            <Carousel id="main-carousel" delayInSeconds={5}>
+              <div className="flex justify-center gap-2">
+                <div className="flex flex-col">
+                  <img
+                    src="https://clashroyale.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/1424339663_1665130280.png?mtime=20221007081119"
+                    alt=""
+                    className="object-cover h-64"
+                  />
+                  <div>
+                    {" "}
+                    <h3 className="font-supercell">
+                      Celebrate #OneSpecialDay!
+                    </h3>
+                    <small>Oct 7, 2022</small>
+                  </div>
+                </div>
+                <div className="flex flex-col  justify-center gap-2">
+                  <img
+                    src="https://clashroyale.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/1424339663_1665130280.png?mtime=20221007081119"
+                    alt=""
+                    className="object-cover h-64"
+                  />
+                  <div>
+                    {" "}
+                    <h3 className="font-supercell">
+                      Celebrate #OneSpecialDay!
+                    </h3>
+                    <small>Oct 7, 2022</small>
+                  </div>
+                </div>
+                <div className="flex flex-col  justify-center gap-2">
+                  <img
+                    src="https://clashroyale.com/uploaded-images-blog/_1440xAUTO_crop_center-center_90/1424339663_1665130280.png?mtime=20221007081119"
+                    alt=""
+                    className="object-cover h-64"
+                  />
+                  <div>
+                    {" "}
+                    <h3 className="font-supercell">
+                      Celebrate #OneSpecialDay!
+                    </h3>
+                    <small>Oct 7, 2022</small>
+                  </div>
+                </div>
+              </div>
+            </Carousel>
           </section>
         </section>
       </div>
