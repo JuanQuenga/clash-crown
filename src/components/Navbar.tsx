@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
 interface INavLink {
   href: string;
@@ -30,7 +30,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="/">
+            <Link href="/" passHref>
               <Image
                 src="/images/logo/clashcrown-large.png"
                 alt="Clash Crown"
@@ -75,7 +75,9 @@ const Navbar = () => {
             <ul className="flex flex-col text-center gap-2 p-4 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-red-200">
               {links.map((link) => (
                 <li key={link.name}>
-                  <NavLink href={link.href} name={link.name} />
+                  <Link href={link.href} passHref>
+                    <NavLink name={link.name} />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -86,18 +88,19 @@ const Navbar = () => {
   );
 };
 
-const NavLink = (link: INavLink) => {
+const NavLink = forwardRef(({ name }: { name: string }, ref) => {
   return (
-    <Link href={link.href}>
+    <div>
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
       >
-        {link.name}
+        {name}
       </motion.div>
-    </Link>
+    </div>
   );
-};
+});
+NavLink.displayName = "NavLink";
 
 export default Navbar;

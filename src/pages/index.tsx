@@ -4,8 +4,10 @@ import HeroItem from "../components/HeroItem";
 import SearchBox from "../components/SearchBox/SearchBox";
 import Carousel from "../components/Carousel/Carousel";
 import GradientText from "../components/common/GradientText";
+import { RefObject, useRef } from "react";
 
 const Home: NextPage = () => {
+  const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
   return (
     <>
       <Head>
@@ -23,7 +25,7 @@ const Home: NextPage = () => {
             </h1>
           </div>
           <div className="">
-            <SearchBox />
+            <SearchBox ref={inputRef} />
           </div>
           <section>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-6 mt-24">

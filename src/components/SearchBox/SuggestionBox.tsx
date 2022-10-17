@@ -40,7 +40,7 @@ const SuggestionBox = ({ suggestion, onClick }: SuggestionProps) => {
       }}
       onClick={onClick}
     >
-      <div className=" text-white text-md text-left p-2 rounded-md bg-main mt-2 mx-4 md:mx-24 bg-gradient-to-r from-yellow-600 to-purple-600">
+      <div className=" text-white text-md text-left p-2 rounded-md bg-main mt-2 mx-4 md:mx-24 bg-gradient-to-r from-yellow-600 to-purple-600 animate-gradient transition bg-gradient">
         <div className="flex justify-between items-center text-lg">
           <div className="flex flex-grow font-supercell items-center">
             {suggestion?.badgeId && (

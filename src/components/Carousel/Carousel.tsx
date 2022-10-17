@@ -2,6 +2,7 @@ import { Children, useEffect, useState } from "react";
 import Button from "./Button";
 import Slide from "./Slide";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import useInterval from "../../hooks/useInterval";
 
 interface CarouselProps {
   id: string;
@@ -19,10 +20,10 @@ const Carousel = ({ id, children, delayInSeconds }: CarouselProps) => {
     document.querySelector(`#slide-${currentSlide}`)!.scrollIntoView();
   }, [currentSlide]);
 
-  // useInterval(() => {
-  //   if (!delayInSeconds) return;
-  //   setCurrentSlide(currentSlide + 1);
-  // }, delayInSeconds! * 1000);
+  useInterval(() => {
+    if (!delayInSeconds) return;
+    setCurrentSlide(currentSlide + 1);
+  }, delayInSeconds! * 1000);
 
   return (
     <div className="relative">
@@ -31,7 +32,7 @@ const Carousel = ({ id, children, delayInSeconds }: CarouselProps) => {
           return <Slide id={`slide-${index}`}>{child}</Slide>;
         })}
       </div>
-      <div className="absolute left-2 top-1/2 -translate-y-1/2">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2">
         <Button
           onClick={() => {
             setCurrentSlide((currentSlide) => currentSlide - 1);
@@ -39,7 +40,7 @@ const Carousel = ({ id, children, delayInSeconds }: CarouselProps) => {
           icon={<FaChevronLeft />}
         />
       </div>
-      <div className="absolute right-2 top-1/2 -translate-y-1/2">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2">
         <Button
           onClick={() => {
             setCurrentSlide((currentSlide) => currentSlide + 1);
