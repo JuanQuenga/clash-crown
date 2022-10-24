@@ -15,7 +15,7 @@ import HelpModal from "./HelpModal";
  * - Add functionality to target select dropdown
  */
 
-const SearchBox = forwardRef<HTMLInputElement>((props, inputRef) => {
+const SearchBox = () => {
   const [query, setQuery] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
@@ -24,7 +24,7 @@ const SearchBox = forwardRef<HTMLInputElement>((props, inputRef) => {
   // const [isDropdownOpen, setIsDropdownOpen] = useState(false); // clans or players
   const animationRef: RefObject<HTMLInputElement> =
     useRef<HTMLInputElement>(null);
-  // const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
+  const inputRef: RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
   const router = Router;
 
   /** Everytime the query state is changed, fetch the player/clan data from the API */
@@ -149,7 +149,7 @@ const SearchBox = forwardRef<HTMLInputElement>((props, inputRef) => {
   /** Hide & Show the animated typing */
   function hideAnimatedTyping() {
     animationRef.current?.classList.add("hidden");
-    inputRef?.current.classList.remove("hidden");
+    inputRef?.current?.classList.remove("hidden");
     inputRef?.current?.focus();
   }
 
@@ -182,6 +182,7 @@ const SearchBox = forwardRef<HTMLInputElement>((props, inputRef) => {
 
               <div className="flex min-w-[13.5rem] md:min-w-[27rem] h-[48px] pl-2">
                 <input
+                  ref={inputRef}
                   className="hidden bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
                   autoFocus
                   onChange={(e) => setQuery(e.target.value)}
@@ -194,6 +195,7 @@ const SearchBox = forwardRef<HTMLInputElement>((props, inputRef) => {
                   value={query}
                 />
                 <div
+                  ref={animationRef}
                   className="flex-1 text-left self-center h-auto py-3 cursor-text"
                   onClick={hideAnimatedTyping}
                 >
@@ -229,7 +231,7 @@ const SearchBox = forwardRef<HTMLInputElement>((props, inputRef) => {
       <HelpModal visible={showHelp} onClick={() => toggleHelpModal()} />
     </div>
   );
-});
+};
 
 SearchBox.displayName = "SearchBox";
 

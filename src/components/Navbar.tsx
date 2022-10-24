@@ -31,11 +31,15 @@ const Navbar = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link href="/" passHref>
-              <Image
-                src="/images/logo/clashcrown-large.png"
-                alt="Clash Crown"
-                layout="fill"
-              />
+              <a>
+                <Image
+                  src="/images/logo/clashcrown-large.png"
+                  alt="Clash Crown"
+                  layout="responsive"
+                  height={110}
+                  width={110}
+                />
+              </a>
             </Link>
           </motion.div>
 
@@ -48,7 +52,7 @@ const Navbar = () => {
             onClick={() => setShowMenu(!showMenu)}
             data-collapse-toggle="navbar-default"
             type="button"
-            className="bg-magic-medium p-2 md:order-3 inline-flex items-center text-red-600 rounded-lg md:hidden focus:border-transparent focus:ring-0"
+            className="bg-magic-medium bg-opacity-90 p-2 md:order-3 inline-flex items-center text-white rounded-lg md:hidden focus:border-transparent focus:ring-0"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -90,15 +94,13 @@ const Navbar = () => {
 
 const NavLink = forwardRef(({ name }: { name: string }, ref) => {
   return (
-    <div>
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
-      >
-        {name}
-      </motion.div>
-    </div>
+    <motion.a
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
+    >
+      {name}
+    </motion.a>
   );
 });
 NavLink.displayName = "NavLink";

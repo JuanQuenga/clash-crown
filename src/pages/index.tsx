@@ -25,7 +25,7 @@ const Home: NextPage = () => {
             </h1>
           </div>
           <div className="">
-            <SearchBox ref={inputRef} />
+            <SearchBox />
           </div>
           <section>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-6 mt-24">
@@ -98,6 +98,12 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </Carousel>
+          </section>
+          <section className="mb-20">
+            <h2 className="font-supercell text-3xl pb-6">Deck Of The Day</h2>
+          </section>
+          <section className="mb-20">
+            <h2 className="font-supercell text-3xl pb-6">Popular Cards</h2>
           </section>
         </section>
       </div>
