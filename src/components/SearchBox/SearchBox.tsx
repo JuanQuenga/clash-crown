@@ -76,6 +76,7 @@ const SearchBox = () => {
     );
   }
   function getLastSearchFromStorage() {
+    console.log("Getting from localStorage");
     const data: any = JSON.parse(
       localStorage.getItem("last-searched") as string
     );
@@ -107,6 +108,7 @@ const SearchBox = () => {
 
   /** Fetch player data from current query in state*/
   function getPlayerSuggestion(tagFromHistory?: string) {
+    console.log("getPlayerSuggestion");
     const isQueryValidTag = isValidHashtag(normalizedQuery());
     if (!isQueryValidTag && !tagFromHistory) return;
     const tagToFetch = tagFromHistory || normalizedQuery();
@@ -126,6 +128,7 @@ const SearchBox = () => {
   }
 
   function getClanSuggestion(tagFromHistory?: string) {
+    console.log("getClanSuggestion");
     const isQueryValidTag = isValidHashtag(normalizedQuery());
     if (!isQueryValidTag && !tagFromHistory) return;
     const tagToFetch = tagFromHistory || normalizedQuery();
@@ -164,7 +167,7 @@ const SearchBox = () => {
       <div className="py-2">
         <div className="grid gap-8 items-start justify-center">
           <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-l from-yellow-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient bg-gradient" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
             <div className="relative flex flex-row mx-auto font-semibold text-white border-[rgba(255,255,255,0)] bg-[rgba(0,0,0,0.8)] border-2 rounded-md">
               <div className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition">
                 <div

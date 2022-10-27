@@ -14,8 +14,8 @@ const characterCount = characterSet.length;
  * Converts Hashtag (player or clantag) to a normalized version without # or common pitfalls
  * @param hashtag Player- or clantag
  */
-export function normalizeHashtag(hashtag: string): string {
-	return hashtag.trim().toUpperCase()
+export function normalizeHashtag(hashtag = ''): string {
+	return hashtag?.trim().toUpperCase()
 		.replace('#', '')
 		.replace(/O/g, '0'); // replace capital O with zero
 }

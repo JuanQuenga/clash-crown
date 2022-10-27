@@ -4,12 +4,8 @@ module.exports = {
   variants: {},
   theme: {
     extend: {
-      backgroundSize: {
-        gradient: "200%",
-      },
       animation: {
-        tilt: "tilt 1s infinite infinite",
-        gradient: "gradient 10s ease infinite",
+        tilt: "tilt 10s infinite linear",
       },
       keyframes: {
         tilt: {
@@ -21,17 +17,6 @@ module.exports = {
           },
           "75%": {
             transform: "rotate(-0.5deg)",
-          },
-        },
-        gradient: {
-          "0%": {
-            "background-position": "0% 50%",
-          },
-          "25%": {
-            "background-position": "100% 50%",
-          },
-          "100%": {
-            "background-position": "0% 50%",
           },
         },
       },
