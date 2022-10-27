@@ -94,13 +94,15 @@ const Navbar = () => {
 
 const NavLink = forwardRef(({ name }: { name: string }, ref) => {
   return (
-    <motion.a
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
-    >
-      {name}
-    </motion.a>
+    <a>
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
+      >
+        {name}
+      </motion.div>
+    </a>
   );
 });
 NavLink.displayName = "NavLink";
