@@ -34,9 +34,9 @@ module.exports = {
         dark: "#181830",
         light: "#cfd6e6",
       },
-    },
-    fontFamily: {
-      supercell: ["Suppercell", "sans-serif"],
+      fontFamily: {
+        supercell: ["Suppercell", "sans-serif"],
+      },
     },
   },
   plugins: [],

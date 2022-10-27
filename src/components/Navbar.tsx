@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { forwardRef, useState } from "react";
+import NavSearchBox from "./NavSearchBox";
 
 interface INavLink {
   href: string;
@@ -76,7 +77,7 @@ const Navbar = () => {
           <div
             className={`${showMenu ? "" : "hidden"} w-full md:block md:w-auto`}
           >
-            <ul className="flex flex-col text-center gap-2 p-4 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-red-200">
+            <ul className="flex flex-col text-center gap-2 my-4 p-2 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-red-200">
               {links.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} passHref>
@@ -85,6 +86,9 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
+            <div className="md:hidden">
+              <NavSearchBox />
+            </div>
           </div>
         </div>
       </div>
