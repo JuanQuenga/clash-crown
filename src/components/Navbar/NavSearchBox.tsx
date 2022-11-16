@@ -2,11 +2,11 @@ import { forwardRef, RefObject, useEffect, useRef, useState } from "react";
 import { FiInfo } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import Router from "next/router";
-import { isValidHashtag, normalizeHashtag } from "../utils/ClashRoyale";
+import { isValidHashtag, normalizeHashtag } from "../../utils/ClashRoyale";
 import axios from "axios";
 import cn from "classnames";
-import SuggestionBox, { Suggestion } from "./SearchBox/SuggestionBox";
-import TargetSwitch from "./SearchBox/TargetSwitch";
+import SuggestionBox, { Suggestion } from "../SearchBox/SuggestionBox";
+import TargetSwitch from "../SearchBox/TargetSwitch";
 
 const NavSearchBox = () => {
   const [query, setQuery] = useState("");
@@ -136,32 +136,17 @@ const NavSearchBox = () => {
       .finally(() => setLoading(false));
   }
 
-  /** Hide & Show the animated typing */
-  function hideAnimatedTyping() {
-    animationRef.current?.classList.add("hidden");
-    inputRef?.current?.classList.remove("hidden");
-    inputRef?.current?.focus();
-  }
-
-  function showAnimatedTyping() {
-    if (query !== "") return;
-    animationRef.current?.classList.remove("hidden");
-    inputRef.current?.classList.add("hidden");
-  }
-
   return (
     <div className="relative font-sans">
-      <div className="px-2">
-        <div className="flex flex-row w-full mx-auto font-semibold text-white border-none bg-footer border-2 rounded-md">
-          <div className="flex min-w-[13.5rem] md:min-w-[27rem] h-[48px] pl-2">
+      <div className="">
+        <div className="flex flex-row max-w-12 mx-auto font-semibold text-white border-none bg-footer md:bg-opaque border-2 rounded-md">
+          <div className="flex flex-grow h-[48px] pl-2">
             <input
               ref={inputRef}
               className="bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
               autoFocus
               defaultValue={query}
               onChange={(e) => setQuery(e.target.value)}
-              onFocus={hideAnimatedTyping}
-              onBlur={showAnimatedTyping}
               onKeyPress={(e) => {
                 e.key === "Enter" ? pushQueryTarget() : null;
               }}
@@ -181,7 +166,7 @@ const NavSearchBox = () => {
         </div>
       </div>
 
-      <SuggestionBox suggestion={suggestion} onClick={pushQueryTarget} />
+      {/* <SuggestionBox suggestion={suggestion} onClick={pushQueryTarget} /> */}
     </div>
   );
 };

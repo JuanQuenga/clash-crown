@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { forwardRef, useState } from "react";
 import NavSearchBox from "./NavSearchBox";
+import { FaSearch } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 interface INavLink {
   href: string;
@@ -11,6 +13,7 @@ interface INavLink {
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   const links: INavLink[] = [
     { href: "/players", name: "Players" },
@@ -44,7 +47,19 @@ const Navbar = () => {
             </Link>
           </motion.div>
 
-          <div className="flex-grow relative"></div>
+          <div className="flex-grow"></div>
+
+          <div className="flex relative md:order-12">
+            <div className="text-2xl">
+              <button
+                onClick={() => {
+                  setIsSearching(isSearching ? false : true);
+                }}
+              >
+                {isSearching ? <FaSearch /> : <ImCross />}
+              </button>
+            </div>
+          </div>
 
           {/* open/close button for mobile nav */}
           <motion.button
@@ -73,23 +88,26 @@ const Navbar = () => {
             </svg>
           </motion.button>
 
-          {/* vav links */}
-          <div
-            className={`${showMenu ? "" : "hidden"} w-full md:block md:w-auto`}
-          >
-            <ul className="flex flex-col text-center gap-2 my-4 p-2 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-red-200">
-              {links.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} passHref>
-                    <NavLink name={link.name} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="md:hidden">
-              <NavSearchBox />
+          {/* nav links */}
+          {isSearching ? (
+            <NavSearchBox />
+          ) : (
+            <div
+              className={`${
+                showMenu ? "" : "hidden"
+              } w-full md:block md:w-auto`}
+            >
+              <ul className="flex flex-col text-center gap-2 my-4 p-2 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-red-200">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} passHref>
+                      <NavLink name={link.name} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </nav>
