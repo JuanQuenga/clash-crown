@@ -23,9 +23,7 @@ const Home: NextPage = () => {
             <GradientText>Chests</GradientText>
           </h1>
         </div>
-        <div className="">
-          <SearchBox />
-        </div>
+        <div className="h-[100px]">{/* <SearchBox /> */}</div>
         <section>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 md:gap-6 mt-24">
             <HeroItem

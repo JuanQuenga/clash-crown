@@ -164,72 +164,70 @@ const SearchBox = () => {
 
   return (
     <div className="relative">
-      <div className="py-2">
-        <div className="grid gap-8 items-start justify-center">
-          <div className="relative group">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
-            <div className="relative flex flex-row mx-auto font-semibold text-white border-[rgba(255,255,255,0)] bg-[rgba(0,0,0,0.8)] border-2 rounded-md">
-              <div className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition">
-                <div
-                  className={cn("text-[3px] loader", {
-                    hidden: !isLoading,
-                  })}
-                ></div>
-                <div
-                  className={cn("", { hidden: isLoading })}
-                  onClick={() => toggleHelpModal()}
-                >
-                  <FiInfo className="text-[2rem] stroke-white" />
-                </div>
+      <div className="py-2 md:mx-[30%]">
+        <div className="relative group w-full">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
+          <div className="relative flex flex-row mx-auto font-semibold text-white border-[rgba(255,255,255,0)] bg-[rgba(0,0,0,0.8)] border-2 rounded-md">
+            <div className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition">
+              <div
+                className={cn("text-[3px] loader", {
+                  hidden: !isLoading,
+                })}
+              ></div>
+              <div
+                className={cn("", { hidden: isLoading })}
+                onClick={() => toggleHelpModal()}
+              >
+                <FiInfo className="text-[2rem] stroke-white" />
               </div>
-
-              <div className="flex min-w-[13.5rem] md:min-w-[27rem] h-[48px] pl-2">
-                <input
-                  ref={inputRef}
-                  className="hidden bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
-                  autoFocus
-                  onChange={(e) => setQuery(e.target.value)}
-                  onFocus={hideAnimatedTyping}
-                  onBlur={showAnimatedTyping}
-                  onKeyPress={(e) => {
-                    e.key === "Enter" ? pushQueryTarget() : null;
-                  }}
-                  type="text"
-                  value={query}
-                />
-                <div
-                  ref={animationRef}
-                  className="flex-1 text-left self-center h-auto py-3 cursor-text"
-                  onClick={hideAnimatedTyping}
-                >
-                  <TypeAnimation
-                    sequence={[
-                      `Enter Your In-Game Tag`,
-                      3000,
-                      "2YGG",
-                      3000,
-                      "#LLP2",
-                      3000,
-                      "PPYU89P8",
-                      3000,
-                    ]}
-                    wrapper="div"
-                    cursor={true}
-                    repeat={Infinity}
-                  />
-                </div>
-              </div>
-
-              <TargetSwitch
-                onClick={() => toggleQueryTarget()}
-                searchPlayer={searchPlayer}
-              />
             </div>
+            {/* min-w-[13.5rem] md:min-w-[27rem] */}
+            <div className="flex flex-grow h-[48px] pl-2">
+              <input
+                ref={inputRef}
+                className="hidden bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
+                autoFocus
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={hideAnimatedTyping}
+                onBlur={showAnimatedTyping}
+                onKeyPress={(e) => {
+                  e.key === "Enter" ? pushQueryTarget() : null;
+                }}
+                type="text"
+                value={query}
+              />
+              <div
+                ref={animationRef}
+                className="flex-1 text-left self-center h-auto py-3 cursor-text"
+                onClick={hideAnimatedTyping}
+              >
+                <TypeAnimation
+                  sequence={[
+                    `Enter Your In-Game Tag`,
+                    3000,
+                    "2YGG",
+                    3000,
+                    "#LLP2",
+                    3000,
+                    "PPYU89P8",
+                    3000,
+                  ]}
+                  wrapper="div"
+                  cursor={true}
+                  repeat={Infinity}
+                />
+              </div>
+            </div>
+
+            <TargetSwitch
+              onClick={() => toggleQueryTarget()}
+              searchPlayer={searchPlayer}
+            />
           </div>
         </div>
       </div>
 
-      <SuggestionBox suggestion={suggestion} onClick={pushQueryTarget} />
+      {/* <SuggestionBox suggestion={suggestion} onClick={pushQueryTarget} /> */}
 
       <HelpModal visible={showHelp} onClick={() => toggleHelpModal()} />
     </div>
