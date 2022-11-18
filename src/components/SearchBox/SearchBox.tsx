@@ -164,9 +164,9 @@ const SearchBox = () => {
 
   return (
     <div className="relative">
-      <div className="py-2 md:mx-[30%]">
+      <div className="py-2 md:mx-[30rem]">
         <div className="relative group w-full">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
           <div className="relative flex flex-row mx-auto font-semibold text-white border-[rgba(255,255,255,0)] bg-[rgba(0,0,0,0.8)] border-2 rounded-md">
             <div className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition">
               <div

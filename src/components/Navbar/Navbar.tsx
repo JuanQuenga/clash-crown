@@ -6,6 +6,7 @@ import NavSearchBox from "./NavSearchBox";
 import { FaSearch } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import SearchBox from "../SearchBox/SearchBox";
+import { useRouter } from "next/router";
 
 interface INavLink {
   href: string;
@@ -16,6 +17,9 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [isAtTop, setIsAtTop] = useState(false);
   const [positionClass, setPositionClass] = useState("relative");
+  const router = useRouter();
+
+  console.log(router.pathname);
 
   const links: INavLink[] = [
     { href: "/players", name: "Players" },
@@ -24,21 +28,12 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    window.addEventListener("scroll", stickNavbar);
-
-    return () => {
-      window.removeEventListener("scroll", stickNavbar);
-    };
-  }, []);
-
-  const stickNavbar = () => {
-    if (window !== undefined) {
-      const windowHeight = window.scrollY;
-      windowHeight > 1
-        ? setPositionClass("relative")
-        : setPositionClass("absolute");
+    if (router.pathname === "/") {
+      setPositionClass("absolute top-[17rem]");
+    } else {
+      setPositionClass("relative");
     }
-  };
+  }, [showMenu]);
 
   return (
     <nav
@@ -70,7 +65,7 @@ const Navbar = () => {
             <motion.div
               layout
               transition={{ duration: 0.3 }}
-              className={`${positionClass} top-[30%] left-0 mx-auto w-full`}
+              className={`${positionClass} left-0 mx-auto w-full`}
             >
               <SearchBox />
             </motion.div>
