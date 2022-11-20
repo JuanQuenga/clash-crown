@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { forwardRef, useEffect, useState } from "react";
-import NavSearchBox from "./NavSearchBox";
 import { FaSearch } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import SearchBox from "../SearchBox/SearchBox";
@@ -15,7 +14,7 @@ interface INavLink {
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [positionClass, setPositionClass] = useState("relative px-[5rem]");
+  const [positionClass, setPositionClass] = useState("px-2");
   const router = useRouter();
 
   console.log(router.pathname);
@@ -30,12 +29,12 @@ const Navbar = () => {
     console.log("use effect: ", router.asPath);
     if (router.pathname === "/") {
       setPositionClass(
-        "absolute top-[17rem] 2xl:px-[30%] lg:px-[25%] -sm:px-3 "
+        "absolute top-[17rem] 2xl:px-[30%] lg:px-[25%] -sm:px-6"
       );
     } else {
-      setPositionClass("relative px-[5rem]");
+      setPositionClass("px-4");
     }
-  }, [router.asPath]);
+  }, [router.asPath, router.pathname]);
 
   return (
     <nav
@@ -44,7 +43,7 @@ const Navbar = () => {
       } mb-6 text-white transition-all ease-in-out`}
     >
       <div className="cc-container">
-        <div className="flex flex-wrap items-center p-2 md:p-2">
+        <div className="flex flex-wrap items-center px-2 pt-2">
           <div className="cursor-pointer relative w-12 h-12 md:h-20 md:w-20 hover:scale-105 transition-transform">
             <Link href="/" passHref>
               <a>
@@ -63,7 +62,7 @@ const Navbar = () => {
             <motion.div
               layout
               transition={{ type: "spring", stiffness: 500, damping: 40 }}
-              className={`${positionClass} left-0 w-full px-[10rem]`}
+              className={`${positionClass} left-0 w-full`}
             >
               <SearchBox />
             </motion.div>
@@ -124,7 +123,7 @@ const NavLink = forwardRef(({ name }: { name: string }, ref) => {
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="hover:text-magic-light cursor-pointer drop-shadow-md text-xl bg-magic-dark rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
+        className="hover:bg-magic-dark cursor-pointer drop-shadow-md text-xl bg-magic-medium rounded-md p-2 md:rounded-none md:p-0 md:bg-transparent"
       >
         {name}
       </motion.div>
