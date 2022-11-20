@@ -21,7 +21,7 @@ const NavSearchBox = () => {
 
   /** Everytime the query state is changed, fetch the player/clan data from the API */
   useEffect(() => {
-    console.log("useEffect");
+    console.log("Validating query... (useEffect)");
     const isQueryValidTag = isValidHashtag(normalizedQuery());
     if (!isQueryValidTag) {
       setSuggestion(null);

@@ -8,6 +8,7 @@ import cn from "classnames";
 import SuggestionBox, { Suggestion } from "./SuggestionBox";
 import TargetSwitch from "./TargetSwitch";
 import HelpModal from "./HelpModal";
+import { motion } from "framer-motion";
 
 /**
  * TODO
@@ -29,7 +30,7 @@ const SearchBox = () => {
 
   /** Everytime the query state is changed, fetch the player/clan data from the API */
   useEffect(() => {
-    console.log("useEffect");
+    console.log("Validating query... (useEffect)");
     const isQueryValidTag = isValidHashtag(normalizedQuery());
     if (!isQueryValidTag) {
       setSuggestion(null);
@@ -164,11 +165,15 @@ const SearchBox = () => {
 
   return (
     <div className="relative">
-      <div className="py-2 md:mx-[30rem]">
-        <div className="relative group w-full">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
-          <div className="relative flex flex-row mx-auto font-semibold text-white border-[rgba(255,255,255,0)] bg-[rgba(0,0,0,0.8)] border-2 rounded-md">
-            <div className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition">
+      <div className="py-2">
+        <div className="relative group w-full md:hover:scale-105 transition-all">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt" />
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-600 to-purple-600 rounded-lg  opacity-[25%] " />
+          <div className="relative flex flex-row mx-auto font-semibold text-white border-[rgba(255,255,255,0)] bg-[rgba(255,255,255,0)] border-2 rounded-md">
+            <motion.div
+              transition={{ type: "spring", stiffness: 500, damping: 40 }}
+              className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition"
+            >
               <div
                 className={cn("text-[3px] loader", {
                   hidden: !isLoading,
@@ -180,9 +185,12 @@ const SearchBox = () => {
               >
                 <FiInfo className="text-[2rem] stroke-white" />
               </div>
-            </div>
+            </motion.div>
             {/* min-w-[13.5rem] md:min-w-[27rem] */}
-            <div className="flex flex-grow h-[48px] pl-2">
+            <motion.div
+              transition={{ type: "spring", stiffness: 500, damping: 40 }}
+              className="flex flex-grow h-[48px] pl-2"
+            >
               <input
                 ref={inputRef}
                 className="hidden bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
@@ -217,12 +225,12 @@ const SearchBox = () => {
                   repeat={Infinity}
                 />
               </div>
-            </div>
+            </motion.div>
 
-            <TargetSwitch
+            {/* <TargetSwitch
               onClick={() => toggleQueryTarget()}
               searchPlayer={searchPlayer}
-            />
+            /> */}
           </div>
         </div>
       </div>

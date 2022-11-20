@@ -15,8 +15,7 @@ interface INavLink {
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(false);
-  const [positionClass, setPositionClass] = useState("relative");
+  const [positionClass, setPositionClass] = useState("relative px-[5rem]");
   const router = useRouter();
 
   console.log(router.pathname);
@@ -28,12 +27,15 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
+    console.log("use effect: ", router.asPath);
     if (router.pathname === "/") {
-      setPositionClass("absolute top-[17rem]");
+      setPositionClass(
+        "absolute top-[17rem] 2xl:px-[30%] lg:px-[25%] -sm:px-3 "
+      );
     } else {
-      setPositionClass("relative");
+      setPositionClass("relative px-[5rem]");
     }
-  }, [showMenu]);
+  }, [router.asPath]);
 
   return (
     <nav
@@ -43,11 +45,7 @@ const Navbar = () => {
     >
       <div className="cc-container">
         <div className="flex flex-wrap items-center p-2 md:p-2">
-          <motion.div
-            className="cursor-pointer relative w-12 h-12 md:h-20 md:w-20"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <div className="cursor-pointer relative w-12 h-12 md:h-20 md:w-20 hover:scale-105 transition-transform">
             <Link href="/" passHref>
               <a>
                 <Image
@@ -59,13 +57,13 @@ const Navbar = () => {
                 />
               </a>
             </Link>
-          </motion.div>
+          </div>
 
           <div className="flex-grow">
             <motion.div
               layout
-              transition={{ duration: 0.3 }}
-              className={`${positionClass} left-0 mx-auto w-full`}
+              transition={{ type: "spring", stiffness: 500, damping: 40 }}
+              className={`${positionClass} left-0 w-full px-[10rem]`}
             >
               <SearchBox />
             </motion.div>
@@ -104,7 +102,7 @@ const Navbar = () => {
               showMenu ? "" : "hidden"
             } w-full md:block md:w-auto font-supercell`}
           >
-            <ul className="flex flex-col text-center gap-2 my-4 p-2 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-red-200">
+            <ul className="flex h-full flex-col justify-items-center text-center gap-2 p-2 pb-2 md:flex-row md:border-0 lg:text-xl md:space-x-8 md:mt-0 border-purple-200">
               {links.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} passHref>
