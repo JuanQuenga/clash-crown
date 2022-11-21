@@ -40,6 +40,7 @@ module.exports = {
         main: "#2e4667",
         dark: "#181830",
         light: "#cfd6e6",
+        body: "#020d1b",
       },
       fontFamily: {
         supercell: ["Suppercell", "sans-serif"],

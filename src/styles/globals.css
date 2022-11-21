@@ -18,6 +18,15 @@
   --accent4: #cfd6e6;
 }
 
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 /* body {
   background-color: var(--main);
   background-image: url("/images/backgrounds/hero-home-1440.jpg"),

@@ -14,10 +14,8 @@ interface INavLink {
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [positionClass, setPositionClass] = useState("px-2");
+  const [positionClass, setPositionClass] = useState("");
   const router = useRouter();
-
-  console.log(router.pathname);
 
   const links: INavLink[] = [
     { href: "/players", name: "Players" },
@@ -26,25 +24,27 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    console.log("use effect: ", router.asPath);
+    console.log("current path (useEffect): ", router.asPath);
     if (router.pathname === "/") {
       setPositionClass(
-        "absolute top-[17rem] 2xl:px-[30%] lg:px-[25%] -sm:px-6"
+        "absolute left-0 top-[17rem] 2xl:px-[30%] lg:px-[25%] -sm:px-6"
       );
     } else {
-      setPositionClass("px-4");
+      setPositionClass("");
     }
   }, [router.asPath, router.pathname]);
 
   return (
     <nav
       className={`${
-        showMenu ? "bg-dark md:bg-transparent" : ""
+        showMenu
+          ? "bg-gradient-to-b from-body to-transparent md:bg-transparent"
+          : ""
       } mb-6 text-white transition-all ease-in-out`}
     >
       <div className="cc-container">
         <div className="flex flex-wrap items-center px-2 pt-2">
-          <div className="cursor-pointer relative w-12 h-12 md:h-20 md:w-20 hover:scale-105 transition-transform">
+          <div className="cursor-pointer relative w-12 h-12 md:h-20 md:w-20 hover:scale-105 transition-transform z-50">
             <Link href="/" passHref>
               <a>
                 <Image
@@ -62,7 +62,7 @@ const Navbar = () => {
             <motion.div
               layout
               transition={{ type: "spring", stiffness: 500, damping: 40 }}
-              className={`${positionClass} left-0 w-full`}
+              className={`${positionClass} px-[3%] pt-1 md:px-[25%] w-full`}
             >
               <SearchBox />
             </motion.div>
@@ -75,7 +75,7 @@ const Navbar = () => {
             onClick={() => setShowMenu(!showMenu)}
             data-collapse-toggle="navbar-default"
             type="button"
-            className="bg-magic-medium bg-opacity-90 p-2 md:order-3 inline-flex items-center text-white rounded-lg md:hidden focus:border-transparent focus:ring-0"
+            className="bg-magic-medium bg-opacity-90 p-2 md:order-3 inline-flex items-center text-white rounded-lg md:hidden focus:border-transparent focus:ring-0 z-50"
             aria-controls="navbar-default"
             aria-expanded="false"
           >

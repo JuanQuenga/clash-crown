@@ -176,11 +176,12 @@ const SearchBox = () => {
 
   return (
     <div className="">
-      <div className="relative group w-full md:hover:scale-105 transition-all">
+      <div className="relative group w-full md:hover:scale-[1.01] transition-all">
         <div className="absolute md:-inset-0.5 blur bg-magic-medium rounded-lg md:blur group-hover:opacity-100 opacity-30 transition duration-1000 group-hover:duration-200 animate-tilt" />
         <div className="absolute inset-0 bg-magic-dark rounded-lg" />
-        <div className="relative flex flex-row mx-auto font-semibold text-white">
-          {/* <motion.div
+        <div className="relative rounded-md w-full bg-gradient-to-r hover:bg-gradient-to-l p-[1px] hover:p-[2px] from-yellow-600 to-magic-medium transition-all duration-[5000ms]">
+          <div className="relative flex flex-row mx-auto font-semibold text-white bg-dark bg-opacity-90 rounded-md">
+            {/* <motion.div
               transition={{ type: "spring", stiffness: 500, damping: 40 }}
               className="flex items-center justify-center h-[48px] p-1 min-w-[44px] hover:bg-[rgba(255,255,255,0.1)] cursor-pointer rounded-md transition"
             >
@@ -196,68 +197,73 @@ const SearchBox = () => {
                 <FiInfo className="text-[2rem] stroke-white" />
               </div>
             </motion.div> */}
-          {/* min-w-[13.5rem] md:min-w-[27rem] */}
-          <motion.div
-            transition={{ type: "spring", stiffness: 500, damping: 40 }}
-            className="flex flex-grow h-[48px] pl-2"
-          >
-            <input
-              ref={inputRef}
-              className="hidden bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
-              autoFocus
-              onChange={(e) => setQuery(e.target.value)}
-              onFocus={hideAnimatedTyping}
-              onBlur={showAnimatedTyping}
-              onKeyPress={(e) => {
-                e.key === "Enter" ? pushQueryTarget() : null;
-              }}
-              type="text"
-              value={query}
-            />
-            <div
-              ref={animationRef}
-              className="flex-1 text-left self-center h-auto py-3 cursor-text"
-              onClick={hideAnimatedTyping}
+            {/* min-w-[13.5rem] md:min-w-[27rem] */}
+            <motion.div
+              transition={{ type: "spring", stiffness: 500, damping: 40 }}
+              className="flex flex-grow h-[48px] pl-2"
             >
-              <TypeAnimation
-                sequence={[
-                  `Enter Your In-Game Tag`,
-                  3000,
-                  "2YGG",
-                  3000,
-                  "#LLP2",
-                  3000,
-                  "PPYU89P8",
-                  3000,
-                ]}
-                wrapper="div"
-                cursor={true}
-                repeat={Infinity}
+              <input
+                ref={inputRef}
+                className="hidden bg-transparent appearance-none w-full h-[48px] uppercase border-none focus:outline-none py-3 md:text-base"
+                autoFocus
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={hideAnimatedTyping}
+                onBlur={showAnimatedTyping}
+                onKeyPress={(e) => {
+                  e.key === "Enter" ? pushQueryTarget() : null;
+                }}
+                type="text"
+                value={query}
               />
+              <div
+                ref={animationRef}
+                className="flex-1 text-left self-center h-auto py-3 cursor-text"
+                onClick={hideAnimatedTyping}
+              >
+                <TypeAnimation
+                  sequence={[
+                    `Enter Your In-Game Tag`,
+                    3000,
+                    "2YGG",
+                    3000,
+                    "#LLP2",
+                    3000,
+                    "PPYU89P8",
+                    3000,
+                  ]}
+                  wrapper="div"
+                  cursor={true}
+                  repeat={Infinity}
+                />
+              </div>
+            </motion.div>
+
+            <div className="text-xl md:text-2xl absolute right-0 top-2 pr-2">
+              {isLoading ? (
+                <div className="text-[3px] loader"></div>
+              ) : isSearching ? (
+                <button
+                  onClick={() => setIsSearching(false)}
+                  className="text-xl"
+                >
+                  <ImCross />
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
-          </motion.div>
 
-          <div className="text-xl md:text-2xl absolute right-0 top-1/4 pr-2">
-            {isLoading ? (
-              <div className="text-[3px] loader"></div>
-            ) : suggestions.length <= 0 ? (
-              <FaSearch />
-            ) : (
-              <button onClick={() => setIsSearching(false)}>
-                <ImCross />
-              </button>
-            )}
-          </div>
-
-          {/* <TargetSwitch
+            {/* <TargetSwitch
               onClick={() => toggleQueryTarget()}
               searchPlayer={searchPlayer}
             /> */}
+          </div>
         </div>
       </div>
       {isSearching && !isLoading && suggestions.length >= 0 && (
-        <div className="absolute w-full left-0 z-20 mt-2 md:mt-6 px-2">
-          <div className="bg-dark p-2 pt-1 rounded-md flex-col gap-2">
+        <div className="absolute z-20 flex-col gap-2 w-[75%] md:w-[40%]">
+          <div className="relative">
+            <div className="absolute bottom-0 -inset-2 blur bg-dark opacity-80 rounded-md pb-"></div>
             {suggestions.map((result) => (
               <div key={`${result.tag}-${result.name}`} className="mt-2">
                 <SuggestionBox suggestion={result} onClick={pushQueryTarget} />

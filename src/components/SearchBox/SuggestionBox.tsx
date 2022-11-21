@@ -21,7 +21,7 @@ const SuggestionBox = ({ suggestion, onClick }: SuggestionProps) => {
       className="mx-auto suggestion cursor-pointer w-full"
       animate={suggestion ? "visible" : "hidden"}
       initial="hidden"
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.95 }}
       variants={{
         hidden: {
@@ -40,8 +40,8 @@ const SuggestionBox = ({ suggestion, onClick }: SuggestionProps) => {
       }}
       onClick={onClick}
     >
-      <div className=" text-white text-md text-left p-2 rounded-md bg-main bg-gradient-to-r from-yellow-600 to-purple-600 animate-gradient transition bg-gradient">
-        <div className="flex justify-between items-center text-lg">
+      <div className=" text-white text-md text-left p-2 rounded-md bg-magic-dark hover:bg-opacity-100 bg-opacity-80">
+        <div className="flex justify-between items-center text-md">
           <div className="flex flex-grow font-supercell items-center">
             {suggestion?.badgeId && (
               <div className="relative w-7 h-8 mr-2">
@@ -54,12 +54,10 @@ const SuggestionBox = ({ suggestion, onClick }: SuggestionProps) => {
             {suggestion?.expLevel && (
               <ExperienceStar level={suggestion?.expLevel as number} />
             )}
-            <span className="mr-3 text-lg">
+            <span className="mr-3 text-md">
               {suggestion?.name || suggestion?.tag}
             </span>
           </div>
-          <span>Go</span>
-          <MdNavigateNext />
         </div>
       </div>
     </motion.div>
