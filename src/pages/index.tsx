@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import HeroItem from "../components/HeroItem";
-import SearchBox from "../components/SearchBox/SearchBox";
-import Carousel from "../components/Carousel/Carousel";
+import SearchBox from "../components/searchbox/SearchBox";
+import Carousel from "../components/carousel/Carousel";
 import GradientText from "../components/common/GradientText";
 import { RefObject, useRef } from "react";
 

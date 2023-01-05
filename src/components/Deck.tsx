@@ -11,7 +11,7 @@ const Deck = ({ cards }: DeckProps) => {
       <div className="grid grid-cols-4 grid-rows-2">
         {cards.map((card, index) => {
           return (
-            <div key={index} className="">
+            <div key={index} className="-m-[2px]">
               <CardImage card={card} />
             </div>
           );

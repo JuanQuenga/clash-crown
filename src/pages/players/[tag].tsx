@@ -12,7 +12,7 @@ import {
 } from "../../types/ClashRoyaleAPI/players/player";
 import { PlayerCard, Role } from "../../types/ClashRoyale";
 import ProfileClanButton from "../../components/players/ProfileClanButton";
-import TabView from "../../components/TabView/TabView";
+import TabView from "../../components/tabview/TabView";
 import UpcomingChests from "../../components/players/UpcomingChests";
 import ExperienceStar from "../../components/ExperienceStar";
 import ArenaIcon from "../../components/ArenaIcon";
@@ -23,9 +23,11 @@ import CardsSection from "../../components/players/CardsSection";
 import BadgeSection from "../../components/players/BadgeSection";
 import DeckSection from "../../components/players/DeckSection";
 import Head from "next/head";
-import BattlesSection from "../../components/players/BattlesSection";
+import BattlesSection from "../../components/battles/BattlesSection";
 import { BattleLog } from "../../types/ClashRoyaleAPI/players/battlelog";
 import { addCommas } from "../../utils/Formatter";
+import AreaChartComponent from "../../components/charts/area/AreaChartComponent";
+import { Tabs, Tab } from "../../components/tabs/TabsComponent";
 
 // Will use getServerSideProps() in the future.
 // I just wanted to get more use with react hooks.
@@ -58,29 +60,6 @@ const Player = () => {
 
   if (isLoading) return <LoadingSection />;
   if (!setPlayerData) return <NotFoundSection />;
-
-  const tabs = [
-    {
-      title: "Stats",
-      content: <StatsSection data={playerData?.player as Player} />,
-    },
-    {
-      title: "Battles",
-      content: (
-        <BattlesSection battleLog={playerData?.battlelog as BattleLog[]} />
-      ),
-    },
-    {
-      title: "Badges",
-      content: <BadgeSection badges={playerData?.player.badges as Badge[]} />,
-    },
-    {
-      title: "Cards",
-      content: (
-        <CardsSection cards={playerData?.player.cards as PlayerCard[]} />
-      ),
-    },
-  ];
 
   return (
     <>
@@ -157,20 +136,39 @@ const Player = () => {
             <small>updated just now</small>
           </div>
         </div>
-        <div className="grid md:grid-cols-6 grid-cols-1 gap-2 mb-8">
-          <div className="lg:col-span-4 md:col-span-3">
-            <UpcomingChests
-              chests={playerData?.upcomingchests as UpcomingChest[]}
-            />
-          </div>
-
-          <div className="lg:col-span-2 md:col-span-3">
-            <DeckSection
-              cards={playerData?.player?.currentDeck as PlayerCard[]}
-            />
-          </div>
+        <div className="col-span-6">
+          <Tabs>
+            <Tab label="Stats">
+              <div className="grid md:grid-cols-6 grid-cols-1 gap-2 mb-8">
+                <div className="lg:col-span-2 md:col-span-3 md:order-2">
+                  <UpcomingChests
+                    chests={playerData?.upcomingchests as UpcomingChest[]}
+                  />
+                  <DeckSection
+                    cards={playerData?.player?.currentDeck as PlayerCard[]}
+                  />
+                </div>
+                <div className="lg:col-span-4 md:col-span-3 col-span-1">
+                  <StatsSection data={playerData?.player as Player} />
+                  <AreaChartComponent />
+                </div>
+              </div>
+            </Tab>
+            <Tab label="Battles">
+              <div>
+                <BattlesSection
+                  battleLog={playerData?.battlelog as BattleLog[]}
+                />
+              </div>
+            </Tab>
+            <Tab label="Cards">
+              <CardsSection cards={playerData?.player.cards as PlayerCard[]} />
+            </Tab>
+            <Tab label="Badges">
+              <BadgeSection badges={playerData?.player.badges as Badge[]} />
+            </Tab>
+          </Tabs>
         </div>
-        <TabView tabs={tabs} />
       </section>
     </>
   );

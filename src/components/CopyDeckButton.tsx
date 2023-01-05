@@ -14,13 +14,13 @@ const CopyDeckButton = ({
   <motion.button
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    className="flex bg-main rounded-md p-2 gap-2 hover:bg-magic-medium"
+    className="flex bg-magic-medium rounded-md p-2 gap-2 hover:bg-magic-light"
   >
     <a
       href={`https://link.clashroyale.com/deck/en?deck=${cards
         .map((c) => c.id)
         .join(";")}`}
-      className="flex-grow whitespace-nowrap"
+      className="flex-grow whitespace-nowrap font-supercell"
     >
       {buttonText}
     </a>

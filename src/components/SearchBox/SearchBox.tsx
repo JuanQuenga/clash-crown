@@ -263,7 +263,7 @@ const SearchBox = () => {
       {isSearching && !isLoading && suggestions.length >= 0 && (
         <div className="absolute z-20 flex-col gap-2 w-[75%] md:w-[40%]">
           <div className="relative">
-            <div className="absolute bottom-0 -inset-2 blur bg-dark opacity-80 rounded-md pb-"></div>
+            <div className="absolute bottom-0 -inset-2 blur bg-dark opacity-[97%] rounded-md pb-"></div>
             {suggestions.map((result) => (
               <div key={`${result.tag}-${result.name}`} className="mt-2">
                 <SuggestionBox suggestion={result} onClick={pushQueryTarget} />

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Badge } from "../../types/ClashRoyaleAPI/players/player";
+import BadgeImage from "../BadgeImage";
 
 const BadgeSection = ({ badges }: { badges: Badge[] }) => {
   if (badges.length === 0)
@@ -11,17 +13,8 @@ const BadgeSection = ({ badges }: { badges: Badge[] }) => {
   return (
     <section>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-8 grid-rows-3 text-white">
-        {badges.map((badge, index) => {
-          return (
-            <img
-              src={badge.iconUrls.large as string}
-              alt={badge.name}
-              key={index}
-              // layout="responsive"
-              height="100%"
-              width="100%"
-            />
-          );
+        {badges.map((badge) => {
+          return <BadgeImage badge={badge} key={badge.name} />;
         })}
       </div>
     </section>

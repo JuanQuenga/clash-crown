@@ -14,7 +14,7 @@ import {
 import MiniStatItem from "../../components/MiniStatItem";
 import { Clan, ClanMember } from "../../types/ClashRoyaleAPI/clans/clan";
 import Head from "next/head";
-import TabView from "../../components/TabView/TabView";
+import TabView from "../../components/tabview/TabView";
 import Image from "next/image";
 import MemberList from "../../components/MemberList";
 

@@ -23,7 +23,7 @@ const ProfileClanButton = ({ clan, role }: ProfileClanButtonProps) => {
           </small>
           <span className="capitalize">{role}</span>
         </div>
-        <div className="-mr-2">
+        <div className="-mr-2 w-[40px] h-full relative">
           <ClanBadge badgeId={clan?.badgeId} name={clan?.name} />
         </div>
       </motion.div>

@@ -1,11 +1,11 @@
 import moment from "moment";
 import Image from "next/image";
-import { Card } from "../types/ClashRoyale";
-import { BattleLog } from "../types/ClashRoyaleAPI/players/battlelog";
-import ArenaIcon from "./ArenaIcon";
-import CopyDeckButton from "./CopyDeckButton";
-import Deck from "./Deck";
-import ExperienceStar from "./ExperienceStar";
+import { Card } from "../../types/ClashRoyale";
+import { BattleLog } from "../../types/ClashRoyaleAPI/players/battlelog";
+import ArenaIcon from "../ArenaIcon";
+import CopyDeckButton from "../CopyDeckButton";
+import Deck from "../Deck";
+import ExperienceStar from "../ExperienceStar";
 
 const BattleComponent = ({ battle }: { battle: BattleLog }) => {
   return (
@@ -21,6 +21,7 @@ const BattleComponent = ({ battle }: { battle: BattleLog }) => {
                 src="/images/ui-icons/trophies.png"
                 width={20}
                 height={20}
+                alt="Trophies"
               />
               <div>
                 {battle.team[0]?.startingTrophies}
@@ -38,7 +39,7 @@ const BattleComponent = ({ battle }: { battle: BattleLog }) => {
         </div>
 
         <div className="col-span-6 md:col-span-1 my-3 md:my-0 grid stacked items-center justify-center md:translate-x-0">
-          <div className=" text-dark text-8xl -z-10">VS</div>
+          <div className="text-magic-dark text-8xl -z-10">VS</div>
           <div className="flex flex-col items-center gap-2">
             <small className="text-light">
               {moment(battle.battleTime).utc().format("MMM D, YYYY")}
@@ -48,6 +49,7 @@ const BattleComponent = ({ battle }: { battle: BattleLog }) => {
                 src="/images/ui-icons/crown-blue.png"
                 width={30}
                 height={30}
+                alt="Blue Crown"
               />
               <span className="text-2xl">
                 {battle.team[0]?.crowns} - {battle.opponent[0]?.crowns}
@@ -56,6 +58,7 @@ const BattleComponent = ({ battle }: { battle: BattleLog }) => {
                 src="/images/ui-icons/crown-red.png"
                 width={30}
                 height={30}
+                alt="Red Crown"
               />
             </div>
             <small className="text-light">{battle.type}</small>
@@ -79,6 +82,7 @@ const BattleComponent = ({ battle }: { battle: BattleLog }) => {
                 src="/images/ui-icons/trophies.png"
                 width={20}
                 height={20}
+                alt="trophies"
               />
               <div>{battle.opponent[0]?.startingTrophies}</div>
             </span>
@@ -89,7 +93,7 @@ const BattleComponent = ({ battle }: { battle: BattleLog }) => {
           </div>
         </div>
       </div>
-      <hr className="border-footer my-6" />
+      <hr className="border-magic-dark my-6" />
     </div>
   );
 };

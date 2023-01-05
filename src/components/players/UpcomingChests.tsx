@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { UpcomingChest } from "../../types/ClashRoyaleAPI/players/chests";
+import PageSection from "../common/PageSection";
 
 export interface UpcomingChestsProps {
   chests: UpcomingChest[];
@@ -12,28 +13,25 @@ const UpcomingChests = ({ chests }: UpcomingChestsProps) => {
   }
 
   return (
-    <div className="text-white">
-      <h2 className="text-lg md:text-2xl mb-2 font-supercell border-b-2 border-white pb-2">
-        Upcoming Chests
-      </h2>
-      <ul className="grid grid-cols-4 lg:grid-cols-7 grid-rows-3 lg:grid-rows-2 gap-y-2">
+    <PageSection title="Upcoming Chests">
+      <div className="flex overflow-hidden overflow-x-scroll md:grid grid-cols-4">
         {chests?.map((chest, index) => {
           return (
-            <motion.li
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               key={`${chest.index} ${chest.name}`}
-              className="flex flex-row group justify-center"
+              className="group justify-center z-0 inline-block"
             >
               <div className="text-[0.8rem]">
                 <div className="flex flex-col">
-                  <div className="bg-magic-medium rounded-full p-2 -mb-8 self-start ">
+                  <div className="bg-magic-medium rounded-full p-2 -mb-8 self-start z-10">
                     <span className="font-supercell">
                       {chest.index > 0 ? `+${chest.index}` : "Next"}
                     </span>
                   </div>
 
-                  <div className="relative w-20 h-20">
+                  <div className="relative w-20 h-20 z-0">
                     <Image
                       src={`/images/chests/${chestSlug(chest.name)}.png`}
                       alt={chest.name}
@@ -47,11 +45,11 @@ const UpcomingChests = ({ chests }: UpcomingChestsProps) => {
                   </div>
                 </div>
               </div>
-            </motion.li>
+            </motion.div>
           );
         })}
-      </ul>
-    </div>
+      </div>
+    </PageSection>
   );
 };
 

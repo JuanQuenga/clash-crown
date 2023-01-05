@@ -4,7 +4,7 @@ import Link from "next/link";
 import { forwardRef, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import SearchBox from "../SearchBox/SearchBox";
+import SearchBox from "../searchbox/SearchBox";
 import { useRouter } from "next/router";
 
 interface INavLink {
@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <div className="cc-container">
         <div className="flex flex-wrap items-center px-2 pt-2">
-          <div className="cursor-pointer relative w-12 h-12 md:h-20 md:w-20 hover:scale-105 transition-transform z-50">
+          <div className="cursor-pointer relative w-12 h-12 md:h-16 md:w-16 hover:scale-105 transition-transform z-50">
             <Link href="/" passHref>
               <a>
                 <Image

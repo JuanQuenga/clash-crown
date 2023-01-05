@@ -1,24 +1,20 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { PlayerCard } from "../../types/ClashRoyale";
+import PageSection from "../common/PageSection";
 import CopyDeckButton from "../CopyDeckButton";
 import Deck from "../Deck";
 
 const DeckSection = ({ cards }: { cards: PlayerCard[] }) => {
   return (
-    <section className="text-white font-supercell px-2">
-      <div className="flex flex-row">
-        <h2 className="text-lg md:text-2xl flex-1 border-b-2 border-white pb-2 mb-2">
-          Current Deck
-        </h2>
-      </div>
-      <div className="flex flex-col">
+    <PageSection title="Current Deck">
+      <div className="">
         <Deck cards={cards} />
         <div className="flex-grow mt-2">
           <CopyDeckButton cards={cards} />
         </div>
       </div>
-    </section>
+    </PageSection>
   );
 };
 
